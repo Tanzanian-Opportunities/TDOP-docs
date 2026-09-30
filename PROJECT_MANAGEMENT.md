@@ -605,12 +605,21 @@ Work Completed:
   issue closed -> DONE), then cleaned up.
 - `README.md` gained a project overview and a quick-links section;
   `CHANGELOG.md` restructured per phase (prompt section 6, rule 1).
+- Provisioned the `GH_TOKEN` repository secret (Actions + Dependabot) in all
+  five repositories via `scripts/setup/set_gh_token_secret.py` (libsodium
+  sealed box, PyNaCl): the default `GITHUB_TOKEN` cannot resolve the
+  organization project board. Fixed the automation mutation declaration
+  (`$optionId: ID!` -> `String!`) that made every status write fail with a
+  schema type mismatch, and made `seed_phase_issues.py` verify each write.
 
 Files Changed:
 - `TDOP-docs`: `PROJECT_MANAGEMENT.md` (dashboard, sections 1.1 and 1.2,
   Session 06, decision log DEC-013/DEC-014, Change History, next-session rule),
   `CHANGELOG.md`, `README.md`, `DEVELOPMENT_GUIDE.md` (section 6 branch
   protection), new `docs/**`, `templates/**`, `scripts/setup/**`.
+- `TDOP-docs`: `scripts/setup/set_gh_token_secret.py` (sealed-box secret
+  provisioning); `.github/workflows/project-board.yml` and the template
+  (`$optionId` declaration fix).
 - All five repositories: `.github/CODEOWNERS`, `.editorconfig`,
   `.github/dependabot.yml`, `.github/workflows/project-board.yml`, CI workflow
   files, issue templates; the four application repositories: `SECURITY.md` and

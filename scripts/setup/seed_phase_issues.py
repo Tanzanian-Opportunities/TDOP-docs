@@ -41,7 +41,7 @@ mutation($projectId: ID!, $contentId: ID!) {
 """
 
 SET_STATUS = """
-mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $optionId: ID!) {
+mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $optionId: String!) {
   updateProjectV2ItemFieldValue(
     input: { projectId: $projectId, itemId: $itemId, fieldId: $fieldId,
              value: { singleSelectOptionId: $optionId } }
@@ -94,7 +94,7 @@ def main():
         print("FAIL  board has no status field with a BACKLOG option")
         sys.exit(1)
 
-    created = linked = existed = failed = 0
+    created = linked = existed = statuses = failed = 0
     for number, name, blurb in PHASES:
         title = f"Phase {number} - {name}"
         node_id = None
@@ -139,7 +139,7 @@ def main():
         )
         if ok(st) and item_id:
             linked += 1
-            graphql(
+            st, sset = graphql(
                 SET_STATUS,
                 {
                     "projectId": project["id"],
@@ -148,12 +148,17 @@ def main():
                     "optionId": backlog["id"],
                 },
             )
+            if ok(st) and not (sset or {}).get("errors"):
+                statuses += 1
+            else:
+                failed += 1
+                print(f"FAIL  '{title}' status not set: {st}: {sset}")
         else:
             print(f"WARN  '{title}' not linked to board: {st}: {link}")
 
     print(
         f"\nPhases: {created} created, {existed} already existed, "
-        f"{linked} linked to board, {failed} failed"
+        f"{linked} linked to board, {statuses} statuses set, {failed} failed"
     )
     if failed:
         sys.exit(1)

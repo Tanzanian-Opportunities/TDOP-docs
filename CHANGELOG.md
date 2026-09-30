@@ -332,6 +332,16 @@ Prompt-compliance pass across all five repositories (DEC-013, DEC-014):
 - **Infrastructure** labels, board description/status field, and phase tracking
   issues (0-10) provisioned by `scripts/setup/`; the automation rules were
   verified live with a scratch issue and a scratch PR, then cleaned up.
+- **Added** `scripts/setup/set_gh_token_secret.py` - sets the `GH_TOKEN`
+  repository secret (Actions + Dependabot) in all five repositories, encrypted
+  client-side with a libsodium sealed box (PyNaCl), because the default
+  `GITHUB_TOKEN` cannot resolve the organization project board
+  (`Could not resolve to a ProjectV2 with the number 1`).
+- **Fixed** the board automation declared `$optionId: ID!` while the schema
+  expects `String`, so every status write was rejected with a type mismatch;
+  the declaration is now `$optionId: String!` (workflow in all five
+  repositories plus the template) and `seed_phase_issues.py` verifies every
+  status write instead of ignoring the response.
 
 ### Phase closure
 
