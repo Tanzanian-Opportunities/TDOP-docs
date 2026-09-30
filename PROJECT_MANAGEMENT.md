@@ -22,7 +22,7 @@ boards) · [`EXISTING_IMPLEMENTATION_AUDIT.md`](EXISTING_IMPLEMENTATION_AUDIT.md
 [`DEVELOPMENT_GUIDE.md`](DEVELOPMENT_GUIDE.md) ·
 [`CONTRIBUTING.md`](CONTRIBUTING.md) · [`SECURITY.md`](SECURITY.md) ·
 [`SECURITY_STANDARDS.md`](SECURITY_STANDARDS.md) · [`CHANGELOG.md`](CHANGELOG.md) ·
-[`CODING_STANDARDS.md`](CODING_STANDARDS.md) · [`Specs/SRS.md`](Specs/SRS.md)
+[`CODING_STANDARDS.md`](CODING_STANDARDS.md) · [`docs/requirements/SRS.md`](docs/requirements/SRS.md)
 
 ---
 
@@ -33,8 +33,8 @@ boards) · [`EXISTING_IMPLEMENTATION_AUDIT.md`](EXISTING_IMPLEMENTATION_AUDIT.md
 | Current Phase | PHASE 01 — Project Initiation (Completed) |
 | Overall Status | PHASE 01 COMPLETED → PHASE 02 READY |
 | Overall Progress | 8% |
-| Current Session | Session 05 |
-| Last Updated | 2026-09-30 (Session 05) |
+| Current Session | Session 06 |
+| Last Updated | 2026-09-30 (Session 06) |
 | Current Objective | Phase 01 closed; next objective: requirements baseline (PHASE 02, not yet started) |
 | Current Blocker | None |
 | Next Action | Begin PHASE 02 — Requirements Engineering (P02-T01) when its work cycle starts |
@@ -51,7 +51,7 @@ boards) · [`EXISTING_IMPLEMENTATION_AUDIT.md`](EXISTING_IMPLEMENTATION_AUDIT.md
 | Short name | TDOP |
 | Purpose | Connect opportunity seekers with trusted opportunities and organizations through discovery, verification, moderation, application tracking, notifications, personalization, governance, analytics, and (later) intelligent and externally sourced opportunity services |
 | Priorities | Trust · Opportunity discovery · Verification · Transparency · Security · Accessibility · Reliability · Maintainability · Explainability · User privacy · Responsible technology |
-| Repository layout | Multi-repository organization [`Tanzanian-Opportunities`](https://github.com/Tanzanian-Opportunities): `TDOP-backend` (Java 21, Spring Boot 3.3, PostgreSQL, Flyway, Nginx edge proxy) · `TDOP-frontend` (React 18, TypeScript, Vite, Tailwind) · `TDOP-infra` (Docker Compose, Cloudflare edge) · `TDOP-docs` (governance, specs, project overview, this file) · `TDOP-mobile` (Flutter/Dart, planned); the former `Tanzanian_Opportunities` umbrella index was dissolved (DEC-012) |
+| Repository layout | Multi-repository organization [`Tanzanian-Opportunities`](https://github.com/Tanzanian-Opportunities): `TDOP-backend` (Java 21, Spring Boot 3.3, PostgreSQL, Flyway, Nginx edge proxy) · `TDOP-frontend` (React 18, TypeScript, Vite, Tailwind) · `TDOP-infra` (Docker Compose, Cloudflare edge) · `TDOP-docs` (governance, specs, project overview, this file, `docs/` contract hub, `templates/`, `scripts/setup/`) · `TDOP-mobile` (Flutter/Dart, planned); the former `Tanzanian_Opportunities` umbrella index was dissolved (DEC-012) |
 | License | MIT (`LICENSE`, declared in `README.md`) — see Decision DEC-001 |
 
 ### 1.2 Governance document set
@@ -70,7 +70,14 @@ boards) · [`EXISTING_IMPLEMENTATION_AUDIT.md`](EXISTING_IMPLEMENTATION_AUDIT.md
 | `CODING_STANDARDS.md` | Binding coding standards for all component repositories |
 | `MAINTAINERS.md` | Maintainer roles, ownership, and contact points (P01-T15) |
 | `LICENSE` | MIT license text — the single license of record; component repositories link here (DEC-011) |
-| `Specs/SRS.md` | Software Requirements Specification draft (Phase 02 baseline input) |
+| `docs/requirements/SRS.md` | Software Requirements Specification draft (Phase 02 baseline input; moved from `Specs/SRS.md`) |
+| `docs/business/roadmap.md` | Canonical business phases 0-10 with statuses (prompt section 6) |
+| `docs/development/project-management.md` | Board workflow, automation map, fields, labels, and rules |
+| `docs/decisions/` | Architecture decision records ADR-0001 - ADR-0014 with an index |
+| `docs/planned-technologies.md` | One explainer per technology: what it is and why TDOP uses it |
+| `docs/phase-0-report.md` | Phase 0 completion report (definition-of-done artifact) |
+| `templates/` | Canonical copies of CI workflows, `project-board.yml`, dependabot configs, `CODEOWNERS`, `SECURITY.md`, license, and issue/PR templates |
+| `scripts/setup/` | Idempotent provisioning scripts for labels, board, and phase tracking issues |
 
 ### 1.3 Official Kanban states
 
@@ -542,6 +549,92 @@ Phase 02 stays `Planned` until then (DEC-008).
 Developer / Agent:
 Maintainer (repository owner) with AI coding-assist session.
 
+### Session 06
+
+Date: 2026-09-30
+
+Phase:
+PHASE 01 - Project Initiation (already `Completed`; this session is owner-directed
+prompt-compliance maintenance outside the phase task list, like Sessions 02-05)
+
+Objective:
+Align all five repositories and `TDOP-docs` with the Phase-0 project-setup prompt
+documented at kickoff: contract-hub `docs/` structure, standard repository files,
+CI shape, labels, board automation rules, templates, setup scripts, and per-phase
+CHANGELOG organization (owner decisions DEC-013 and DEC-014).
+
+Tasks Started:
+- None from the 177-task set (owner-directed maintenance; no task states changed,
+  no phase reopened).
+
+Tasks Completed:
+- None from the 177-task set.
+
+Work Completed:
+- Created the prompt's `docs/` contract-hub tree in `TDOP-docs`:
+  `business/roadmap.md` (canonical business phases 0-10 with statuses),
+  `requirements/SRS.md` (moved from `Specs/SRS.md`, stub left behind),
+  `development/project-management.md` (board workflow, automation map, fields,
+  labels, rules), `planned-technologies.md` (one explainer per technology),
+  `decisions/` (ADR-0001 - ADR-0014 plus an index), `phase-0-report.md`.
+- Populated `templates/` (five CI workflows, `project-board.yml`, per-stack
+  dependabot configs, `CODEOWNERS`, `.editorconfig`, `SECURITY.md`,
+  proprietary `LICENSE`, issue/PR templates) with a template-to-destination
+  README, and `scripts/setup/` (idempotent Python provisioning: `gh.py`,
+  `provision_labels.py`, `provision_board.py`, `seed_phase_issues.py`,
+  reading `GH_TOKEN` from the environment, HTTP errors treated as data, retries
+  with backoff).
+- Standard files in every repository: `.github/CODEOWNERS`, `.editorconfig`,
+  `.github/dependabot.yml`, `.github/workflows/project-board.yml`; the four
+  application repositories additionally got `SECURITY.md` and a proprietary
+  all-rights-reserved `LICENSE` (DEC-013); `TDOP-mobile/.env.example`;
+  `.gitignore` for `TDOP-docs` and `TDOP-infra`.
+- Label groups provisioned in all five repositories (`type:*`, `component:*`,
+  `priority:*`); issue templates pre-apply `type:bug` / `type:feature`.
+- CI hardened in all five repositories: push triggers on `main` + `develop`,
+  pull requests against both, concurrency cancellation for superseded PR runs;
+  frontend CI is now `npm ci -> lint -> build -> test` with a blocking lint gate
+  (`.eslintrc.json` added; conditional-hook error fixed in
+  `TestimonialSlider.tsx`: 0 lint errors, build green, 36/36 tests).
+- Branch protection enabled on `develop` in all five repositories (pull requests
+  required, CI status check required, administrators not enforced - free tier on
+  public repositories; the private-repo paid-plan limitation is documented in
+  `DEVELOPMENT_GUIDE.md` section 6, DEC-014).
+- Board automation verified live with a scratch issue and a scratch PR (opened ->
+  BACKLOG, assigned -> IN PROGRESS, PR opened -> CODE REVIEW, PR merged -> TESTING,
+  issue closed -> DONE), then cleaned up.
+- `README.md` gained a project overview and a quick-links section;
+  `CHANGELOG.md` restructured per phase (prompt section 6, rule 1).
+
+Files Changed:
+- `TDOP-docs`: `PROJECT_MANAGEMENT.md` (dashboard, sections 1.1 and 1.2,
+  Session 06, decision log DEC-013/DEC-014, Change History, next-session rule),
+  `CHANGELOG.md`, `README.md`, `DEVELOPMENT_GUIDE.md` (section 6 branch
+  protection), new `docs/**`, `templates/**`, `scripts/setup/**`.
+- All five repositories: `.github/CODEOWNERS`, `.editorconfig`,
+  `.github/dependabot.yml`, `.github/workflows/project-board.yml`, CI workflow
+  files, issue templates; the four application repositories: `SECURITY.md` and
+  `LICENSE`; `TDOP-mobile`: `.env.example`; `TDOP-frontend`:
+  `.eslintrc.json` and `src/components/landing/TestimonialSlider.tsx`.
+
+Blockers:
+- None.
+
+Decisions Made:
+- DEC-013 - proprietary all-rights-reserved `LICENSE` files in the four
+  application repositories; `TDOP-docs` keeps MIT as the license of record for
+  governance documents (amends DEC-011 scope).
+- DEC-014 - repositories stay public; free branch-protection rules applied on
+  `develop` in all five repositories; the paid-plan limitation for private
+  repositories is documented in `DEVELOPMENT_GUIDE.md` section 6.
+
+Next Action:
+PHASE 02 - Requirements Engineering (P02-T01) when its work cycle starts;
+Phase 02 stays `Planned` until then (DEC-008).
+
+Developer / Agent:
+Maintainer (repository owner) with AI coding-assist session.
+
 ---
 
 ## 4. Master Roadmap
@@ -816,6 +909,8 @@ Status values: `Accepted` · `Proposed` · `Superseded` · `Rejected`.
 | DEC-010 | 2026-09-30 | Mobile application stack: **Flutter / Dart** targeting Android and iOS from one codebase | Owner directive after stack review; cross-device coverage without maintaining two native codebases | React Native; separate Kotlin and Swift apps; leaving the stack undecided | `TDOP-mobile` README, the umbrella stack table, and `DEVELOPMENT_GUIDE.md` record Flutter/Dart; the mobile CI skeleton runs only after `pubspec.yaml` exists | 01 | Accepted |
 | DEC-011 | 2026-09-30 | **Single license of record**: the MIT `LICENSE` file lives only in `TDOP-docs`; every component repository links to it instead of carrying a copy | Owner directive: one canonical license file that cannot drift across five copies; each repository README still declares the license | Keep a `LICENSE` copy in every repository; no license file at all | Amends DEC-001; `LICENSE` removed from `TDOP-backend`, `TDOP-frontend`, `TDOP-infra`, `TDOP-mobile`, and the umbrella index; their READMEs and the governance tables link to `TDOP-docs/LICENSE` | 01 | Accepted |
 | DEC-012 | 2026-09-30 | Dissolve the **umbrella index repository** `Tanzanian_Opportunities`: its important content moved to `TDOP-docs/PROJECT_OVERVIEW.md` and the repository (GitHub + local) was deleted; supersedes the umbrella part of DEC-007 | Owner directive: one fewer repository to keep consistent; overview/index duties belong to the source-of-truth repository `TDOP-docs` | Keep the umbrella as an index-only repository; move only part of its content | Live documents no longer reference the deleted repository; component READMEs link to `TDOP-docs/PROJECT_OVERVIEW.md`; SECURITY advisory fallback now points to `TDOP-docs`; repository and its branches removed from GitHub | 01 | Accepted |
+| DEC-013 | 2026-09-30 | **Proprietary license per application repository**: `TDOP-backend`, `TDOP-frontend`, `TDOP-infra`, and `TDOP-mobile` each carry an all-rights-reserved `LICENSE` file, while `TDOP-docs` keeps the MIT `LICENSE` as the license of record for governance and specification documents | Owner directive: application source code is proprietary while the governance/specification hub stays openly licensed; DEC-011's single-file model cannot express two licenses | One MIT license everywhere (DEC-011 as originally written); no license files in the application repositories | Amends DEC-011 (single license of record now applies to `TDOP-docs` only); application READMEs and license tables point to their own `LICENSE`; governance-document contribution terms unchanged | 01 | Accepted |
+| DEC-014 | 2026-09-30 | **Repositories stay public** and free **branch protection** is enabled on `develop` in all five repositories (pull requests required, required CI status check, administrators not enforced) | Owner directive: keep the repositories public to obtain real enforcement at no cost - GitHub branch protection requires a paid plan on private repositories | Make the repositories private now and lose branch protection (paid plans only); leave `develop` unprotected; wait for a paid plan before enforcing anything | `DEVELOPMENT_GUIDE.md` section 6 documents the exact rules and the private-repo paid-plan limitation; revisit if the repositories are ever made private | 01 | Accepted |
 
 ---
 
@@ -835,6 +930,8 @@ Changes to `PROJECT_MANAGEMENT.md` itself (append-only).
 | 2026-09-30 | Session 04 | Phase 01 completed: P01-T12 – P01-T15 moved to `DONE` (audit evidence verified 27/27 file references; issue/PR templates and CI skeletons added under `.github/` in every component repository; `MAINTAINERS.md` created); Phase Tracker §5 and the phase records in `TASK_BREAKDOWN.md` converted to the `Planned` / `In progress` / `Completed` lifecycle; dashboard, §2, §8, §16, §17, §18 updated | Maintainer with AI coding-assist |
 | 2026-09-30 | Session 05 | Owner directive executed: umbrella repository content absorbed into `TDOP-docs/PROJECT_OVERVIEW.md` (repository map, technology stack, implementation status, quick start, demo accounts, deployment); all live references to `Tanzanian_Opportunities` removed (DEC-012); repository deleted from GitHub after a local bundle archive | Maintainer with AI coding-assist |
 | 2026-09-30 | Session 05 | Header, §1.1 repository layout, `SECURITY.md` advisory fallback, `DEVELOPMENT_GUIDE.md` tree, `MAINTAINERS.md`, `README_PRD.md`, docs `README.md`, component README Related links, and issue-template area lists updated for the dissolved umbrella; `CHANGELOG.md` entries added | Maintainer with AI coding-assist |
+| 2026-09-30 | Session 06 | Prompt-compliance alignment: `docs/` contract-hub tree created (`business/roadmap.md`, `requirements/SRS.md` moved from `Specs/` with a stub left, `development/project-management.md`, `planned-technologies.md`, `decisions/` ADR-0001 - ADR-0014, `phase-0-report.md`), `templates/` and `scripts/setup/` populated; standard files added in all five repositories (`.github/CODEOWNERS`, `.editorconfig`, `dependabot.yml`, `project-board.yml`, `SECURITY.md`, proprietary `LICENSE` per DEC-013, mobile `.env.example`); labels (`type:*`, `component:*`, `priority:*`) provisioned everywhere; DEC-013 and DEC-014 recorded | Maintainer with AI coding-assist |
+| 2026-09-30 | Session 06 | CI hardened in all five repositories (pushes to `main` + `develop`, PRs against both, PR concurrency cancellation; frontend `npm ci -> lint -> build -> test` with blocking lint), branch protection enabled on `develop` (DEC-014), board automation verified with a scratch issue/PR and cleaned up, `README.md` quick links added, `CHANGELOG.md` restructured per phase, `docs/phase-0-report.md` completed; validator 33/33 | Maintainer with AI coding-assist |
 
 Validation checklist performed for P01-T09:
 
@@ -889,7 +986,7 @@ Immediate (next work cycle, PHASE 02):
 1. Open **Cycle 02** in §8 with goal "Approved requirements baseline" and move
    P02-T01 to `IN PROGRESS` (set Phase 02 status `Planned → In progress`, DEC-008).
 2. **P02-T01 – P02-T06** — consolidate `README_PRD.md` and the specs under
-   `Specs/` (including `Specs/SRS.md`) into a versioned, traceable requirements
+   `Specs/` (including `docs/requirements/SRS.md`) into a versioned, traceable requirements
    baseline (Phase 02 exit criteria, §7 of `TASK_BREAKDOWN.md`).
 3. When Phase 02 exit criteria are met: mark it `Completed`, append its
    phase-closure summary to `CHANGELOG.md`, and update §2 in the same change set.
@@ -899,5 +996,5 @@ Phase 01 is closed — do not reopen it; corrections belong in a new session ent
 Standing rules for the next session:
 
 - Read this file first; continue only from the current position (§2).
-- Append `Session 05` — never edit Session 04 or earlier.
+- Append `Session 06` — never edit Session 05 or earlier.
 - Update task states, phase progress, changelog, and logs as work happens.

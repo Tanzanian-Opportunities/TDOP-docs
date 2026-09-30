@@ -193,9 +193,25 @@ Every TDOP repository uses the same two permanent branches (Decision DEC-007):
   `refactor/<name>`, `test/<name>`, `chore/<name>`.
 - Branch from the latest `develop`; rebase before requesting review if `develop`
   moved.
-- No force-pushes on `main` or `develop`; protect them once CI exists (Phase 30).
+- No force-pushes on `main` or `develop`.
 - Releases: merge `develop` → `main`, tag `vX.Y.Z` on `main`, merge back to
   `develop`.
+
+### Branch protection
+
+Protected rules on `develop` in every repository (enabled for all five repos):
+
+- Pull requests required; the CI workflow must pass before merging.
+- Administrators are **not** enforced, so scripted/admin pushes (governance
+  sessions) still work; everyone else follows the PR path.
+- `main` receives releases only; no force-pushes or deletions on either branch.
+
+**Plan limitation (documented instead of attempted for private repos, per the
+Phase 0 prompt):** GitHub branch-protection rules on **private** repositories
+require a paid plan (GitHub Pro / Team / Enterprise). TDOP repositories are
+currently **public**, so the free branch-protection tier applies and the rules
+above are active (Decision DEC-014). If the repositories are ever made
+private, these rules would require a paid plan - re-evaluate at that point.
 
 ## 7. Commit conventions
 

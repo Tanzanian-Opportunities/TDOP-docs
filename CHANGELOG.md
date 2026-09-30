@@ -11,9 +11,12 @@ or project governance must be recorded here in the same change set that introduc
 
 ## How to update this file
 
-1. `[Unreleased]` is grouped **by project part** (repository, board, or governance
-   unit). Record each change under the part it happened in, so every part's history
-   is visible at a glance.
+1. `[Unreleased]` is organized **per phase** (prompt section 6): while a phase is
+   in progress, record step-by-step `Added` / `Changed` / `Fixed` bullets
+   under a `### Phase NN - <Name>` subsection inside `[Unreleased]` (grouped by
+   project part within that subsection). When a phase completes, consolidate the
+   subsection into a top-level `## Phase NN - <Name> - Completed - YYYY-MM-DD` heading
+   as a what-was-delivered list, and start fresh in `[Unreleased]`.
 2. Each entry should be a short, factual bullet. Start with a verb (`Add`, `Change`,
    `Fix`, `Remove`, `Deprecate`, `Secure`).
 3. Security-relevant changes must start with **`Security:`** so they can never be
@@ -22,10 +25,10 @@ or project governance must be recorded here in the same change set that introduc
    every phase as `Planned` → `In progress` → `Completed`. This lifecycle is
    **independent of the six-state task Kanban** (DEC-008).
    - When a phase starts being implemented, its row becomes `In progress`.
-   - When a phase is fully done, its row becomes `Completed` **and** a consolidated
-     phase-closure entry is added (under the release section that finishes the phase)
-     summarizing the phase's final changes for every part — then work moves to the
-     next phase, whose row flips from `Planned` to `In progress`.
+   - When a phase is fully done, its `[Unreleased]` subsection is consolidated
+     into a top-level `## Phase NN - <Name> - Completed` heading (a
+     what-was-delivered list); then work moves to the next phase, whose row
+     flips from `Planned` to `In progress`.
    - All remaining phases stay `Planned` until their start criteria are met.
 5. When a release is cut (git tag `vX.Y.Z`), move everything from `[Unreleased]` into
    a new section `## [X.Y.Z] — YYYY-MM-DD` (including any phase-closure summaries)
@@ -94,6 +97,28 @@ Kanban task states (DEC-008); progress percentages live in
 ---
 
 ## [Unreleased]
+
+No open-phase entries: Phase 0 - Project Setup is Completed and consolidated
+below (per the update rules above). While a phase is in progress, its
+step-by-step `Added` / `Changed` / `Fixed` bullets live here under a
+`### Phase NN - <Name>` subsection.
+
+---
+
+## Phase 0 - Project Setup - Completed - 2026-09-30
+
+What was delivered (consolidated on completion, prompt section 6):
+
+- Five repositories (`TDOP-docs`, `TDOP-backend`, `TDOP-frontend`,
+  `TDOP-infra`, `TDOP-mobile`) with `main` + `develop`, green CI on
+  `develop`, and branch protection on `develop`.
+- Governance set, contract-hub `docs/` layout (roadmap, SRS, board rules, planned
+  technologies, ADRs, Phase 0 report), `templates/`, and `scripts/setup/`.
+- Live board with six-state automation, standard labels in every repository, and
+  seeded phase tracking issues (0-10).
+- Engineering `PHASE 01 - Project Initiation` Completed (15/15 tasks; DEC-004 -
+  no auto-crediting).
+- The details below preserve the original step-by-step entries of the phase.
 
 ### TDOP-docs
 
@@ -256,6 +281,58 @@ Kanban task states (DEC-008); progress percentages live in
   (`TDOP-docs`, `TDOP-backend`, `TDOP-frontend`, `TDOP-infra`, `TDOP-mobile`)
   completed `success`.
 
+### Phase 0 alignment (Session 06)
+
+Prompt-compliance pass across all five repositories (DEC-013, DEC-014):
+
+- **Added** the `docs/` contract-hub tree: `business/roadmap.md` (canonical
+  phases 0-10 with statuses), `requirements/SRS.md` (moved from `Specs/SRS.md`;
+  stub left for old links), `development/project-management.md` (board workflow,
+  automation map, fields, labels, rules), `planned-technologies.md` (one explainer
+  per technology), `decisions/` (ADR-0001 - ADR-0014 + index),
+  `phase-0-report.md`.
+- **Added** `templates/` - canonical copies of the five CI workflows,
+  `project-board.yml`, per-stack dependabot configs, `CODEOWNERS`,
+  `.editorconfig`, `SECURITY.md`, the proprietary `LICENSE`, and issue/PR
+  templates, with a README mapping template to destination.
+- **Added** `scripts/setup/` - idempotent Python provisioning (`gh.py` client
+  with retries and errors-as-data, `provision_labels.py`, `provision_board.py`,
+  `seed_phase_issues.py`) reading `GH_TOKEN` from the environment, plus a usage
+  README.
+- **Added** `.github/workflows/project-board.yml` - identical in all five
+  repositories: issue opened -> BACKLOG, assigned -> IN PROGRESS, PR opened ->
+  CODE REVIEW (including closing-linked issues), PR merged -> TESTING (never
+  auto-DONE), issue closed -> DONE.
+- **Added** standard files in every repository: `.github/CODEOWNERS`,
+  `.editorconfig`, `.github/dependabot.yml` (stack ecosystems + github-actions,
+  weekly); app repositories additionally get `SECURITY.md` (supported versions,
+  reporting, token hygiene) and a proprietary all-rights-reserved `LICENSE`
+  (DEC-013).
+- **Added** `TDOP-mobile/.env.example` (API base URL, app name, environment flag);
+  `.gitignore` for `TDOP-docs` and `TDOP-infra`.
+- **Added** label groups in all five repositories: `type:*`
+  (bug/feature/docs/chore), `component:*` (frontend/backend/mobile/docs/database/devops),
+  `priority:*` (high/medium/low); issue templates pre-apply `type:bug` /
+  `type:feature`.
+- **Changed** CI in all five repositories: triggers are now pushes to `main` and
+  `develop` plus pull requests against both, with a concurrency group that cancels
+  superseded PR runs.
+- **Changed** frontend CI is `npm ci -> lint -> build -> test` with a blocking
+  lint gate: `.eslintrc.json` added, the conditional-hook error in
+  `TestimonialSlider.tsx` fixed (lint 0 errors, build green, 36/36 tests).
+- **Changed** branch protection enabled on `develop` in all five repositories
+  (pull requests required, CI check required, administrators not enforced - free
+  tier while the repositories are public); the private-repo paid-plan limitation is
+  documented in `DEVELOPMENT_GUIDE.md` section 6 (DEC-014).
+- **Changed** `README.md` gains a project overview and a quick-links section; the
+  contents table lists the new `docs/`, `templates/`, and `scripts/setup/`
+  entries.
+- **Changed** this CHANGELOG is organized per phase (prompt section 6, rule 1):
+  delivered work consolidated under `## Phase 0 - Project Setup - Completed`.
+- **Infrastructure** labels, board description/status field, and phase tracking
+  issues (0-10) provisioned by `scripts/setup/`; the automation rules were
+  verified live with a scratch issue and a scratch PR, then cleaned up.
+
 ### Phase closure
 
 - **Phase 01 — Project Initiation: Completed (2026-09-30, Session 04)** —
@@ -277,13 +354,11 @@ Kanban task states (DEC-008); progress percentages live in
     `Phase completion status`; next phase (02) stays `Planned` until its work
     starts (DEC-008).
 
----
-
-## [0.1.0] — Unreleased (in preparation)
+### 0.1.0 baseline entries (in preparation)
 
 First governance baseline. This section will be dated when the first tag is cut.
 
-### Added
+#### Added
 
 - `LICENSE` — MIT license file formalizing the "License: MIT" declaration already
   present in `README.md`.
@@ -306,7 +381,7 @@ First governance baseline. This section will be dated when the first tag is cut.
   Kanban, per-phase Kanban boards, decision log, blocker log, risk register, and
   existing-implementation audit.
 
-### Documentation
+#### Documentation
 
 - Official 33-phase development roadmap recorded as the authoritative project
   progression (PHASE 01 — Project Initiation → PHASE 33 — Continuous Improvement).
@@ -321,7 +396,7 @@ First governance baseline. This section will be dated when the first tag is cut.
   (`CONTRIBUTING.md` → `DEVELOPMENT_GUIDE.md` → `PROJECT_MANAGEMENT.md`,
   `SECURITY.md` → `SECURITY_STANDARDS.md`).
 
-### Notes
+#### Notes
 
 - Development work performed before this governance baseline exists only in git
   history (`git log`). It was deliberately **not** backfilled into this changelog as

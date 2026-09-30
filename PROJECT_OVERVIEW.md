@@ -186,7 +186,7 @@ Full deployment procedure: [`Specs/DEPLOYMENT_CHECKLIST.md`](Specs/DEPLOYMENT_CH
 | [`PROJECT_MANAGEMENT.md`](PROJECT_MANAGEMENT.md) | **Live source of truth**: phase, tasks, sessions, decisions |
 | [`TASK_BREAKDOWN.md`](TASK_BREAKDOWN.md) | Master Kanban (177 tasks) and all 33 phase boards |
 | [`README_PRD.md`](README_PRD.md) | Product requirements document |
-| [`Specs/SRS.md`](Specs/SRS.md) | Software requirements specification |
+| [`docs/requirements/SRS.md`](docs/requirements/SRS.md) | Software requirements specification |
 | [`Specs/TDOP_MASTER_SPEC.md`](Specs/TDOP_MASTER_SPEC.md) | Architecture and implementation specification |
 | [`DEVELOPMENT_GUIDE.md`](DEVELOPMENT_GUIDE.md) | Engineering lifecycle and standards |
 | [`CODING_STANDARDS.md`](CODING_STANDARDS.md) | Binding coding standards |

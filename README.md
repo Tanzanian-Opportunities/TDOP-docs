@@ -3,6 +3,31 @@
 **Tanzania Digital Opportunity Platform (TDOP)** — governance, specifications, and
 the live project-management source of truth.
 
+## Project overview
+
+TDOP is a digital opportunity discovery and progress platform connecting
+seekers, organizations, and platform operators in Tanzania. The project is
+built as a multi-repository product (REST API, web app, Docker infrastructure,
+documentation, planned Flutter app) under the
+[`Tanzanian-Opportunities`](https://github.com/Tanzanian-Opportunities)
+organization. Start with [`PROJECT_OVERVIEW.md`](PROJECT_OVERVIEW.md) for the
+full overview, technology stack, quick start, and current implementation
+status; this README is the contract hub for the repository layout.
+
+## Quick links
+
+- [Project overview](PROJECT_OVERVIEW.md) — repository map, stack, quick start
+- [Business roadmap (phases 0–10)](docs/business/roadmap.md) — canonical phase list with statuses
+- [Project management (board rules)](docs/development/project-management.md) — workflow, automation, fields, labels
+- [Live source of truth](PROJECT_MANAGEMENT.md) — current position, sessions, decisions
+- [Task breakdown](TASK_BREAKDOWN.md) — 177 tasks / 33 phase boards
+- [SRS](docs/requirements/SRS.md) · [PRD](README_PRD.md) · [Master spec](Specs/TDOP_MASTER_SPEC.md)
+- [Decision records (ADR-0001+)](docs/decisions/README.md)
+- [Planned technologies](docs/planned-technologies.md) — one explainer per technology
+- [Phase 0 report](docs/phase-0-report.md) · [Templates](templates/) · [Setup scripts](scripts/setup/)
+- [Kanban board](https://github.com/orgs/Tanzanian-Opportunities/projects/1)
+- [Security policy](SECURITY.md) · [Contributing](CONTRIBUTING.md) · [Development guide](DEVELOPMENT_GUIDE.md)
+
 This repository is the documentation hub of the TDOP organization
 ([`Tanzanian-Opportunities`](https://github.com/Tanzanian-Opportunities)). Code lives
 in the component repositories listed below.
@@ -44,8 +69,16 @@ Clone the repositories side by side in one directory — the Docker build contex
 | [`CHANGELOG.md`](CHANGELOG.md) | Change history per project part + phase completion status |
 | [`MAINTAINERS.md`](MAINTAINERS.md) | Owners, roles, and contact placeholders |
 | [`README_PRD.md`](README_PRD.md) | Product requirements document |
-| [`LICENSE`](LICENSE) | MIT license text - the single license of record for all repositories |
-| [`Specs/`](Specs/) | `SRS.md`, `TDOP_MASTER_SPEC.md`, `IMPLEMENTATION & FUTURE ROADMAP.md` (+ `.docx`), `DEPLOYMENT_CHECKLIST.md` |
+| [`LICENSE`](LICENSE) | MIT license text - the single license of record for **this** repository; app repositories carry proprietary all-rights-reserved notices (DEC-013) |
+| [`docs/business/roadmap.md`](docs/business/roadmap.md) | Canonical business phases 0-10 with statuses |
+| [`docs/requirements/SRS.md`](docs/requirements/SRS.md) | Software requirements specification (moved from `Specs/SRS.md`) |
+| [`docs/development/project-management.md`](docs/development/project-management.md) | Board workflow, automation map, fields, labels, rules |
+| [`docs/planned-technologies.md`](docs/planned-technologies.md) | One explainer per planned technology |
+| [`docs/decisions/`](docs/decisions/) | Architecture decision records (ADR-0001 onward) |
+| [`docs/phase-0-report.md`](docs/phase-0-report.md) | Phase 0 completion report |
+| [`templates/`](templates/) | Canonical copies of CI, dependabot, CODEOWNERS, SECURITY, editorconfig, issue/PR templates, board automation |
+| [`scripts/setup/`](scripts/setup/) | Idempotent Python provisioning (board, labels, phase issues) |
+| [`Specs/`](Specs/) | `TDOP_MASTER_SPEC.md`, `IMPLEMENTATION & FUTURE ROADMAP.md` (+ `.docx`), `DEPLOYMENT_CHECKLIST.md` |
 
 ## How tracking works
 
@@ -65,4 +98,6 @@ and `main` (releases, tagged `vX.Y.Z`). See `DEVELOPMENT_GUIDE.md` §6.
 
 ## License
 
-MIT — see [`LICENSE`](LICENSE).
+This documentation repository is MIT — see [`LICENSE`](LICENSE). The
+application repositories (`TDOP-backend`, `TDOP-frontend`, `TDOP-infra`,
+`TDOP-mobile`) carry proprietary "all rights reserved" notices (DEC-013).

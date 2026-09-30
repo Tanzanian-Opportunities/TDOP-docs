@@ -1,0 +1,13 @@
+# Local environment values - never commit
+.env
+
+# Python (scripts/setup)
+__pycache__/
+*.pyc
+.venv/
+
+# Editors / OS
+.vscode/
+~$*
+.DS_Store
+Thumbs.db
