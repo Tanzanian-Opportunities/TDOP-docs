@@ -10,7 +10,7 @@ Contact details that cannot be verified are marked `[TBD]` — never invent them
 |---|---|---|
 | Organization | GitHub organization [`Tanzanian-Opportunities`](https://github.com/Tanzanian-Opportunities) | Owns all TDOP repositories (Decision DEC-006) |
 | Repository owner (maintainer of record) | GitHub account [`felix202422`](https://github.com/felix202422) | Account that created and pushes to the repositories (visible in git history); final decision authority |
-| Umbrella index | `Tanzanian_Opportunities` | Overview, pointers, license links |
+| Index / overview | `TDOP-docs/PROJECT_OVERVIEW.md` | Absorbed from the former `Tanzanian_Opportunities` umbrella index, which was dissolved (DEC-012) |
 | Source of truth | `TDOP-docs` | `PROJECT_MANAGEMENT.md` governs what is real |
 
 ## Roles

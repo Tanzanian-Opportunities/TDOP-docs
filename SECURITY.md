@@ -41,7 +41,7 @@ vulnerability exists:
 
 - **Backend:** https://github.com/Tanzanian-Opportunities/TDOP-backend/security/advisories/new
 - **Frontend:** https://github.com/Tanzanian-Opportunities/TDOP-frontend/security/advisories/new
-- **Infrastructure, docs, or if unsure:** https://github.com/Tanzanian-Opportunities/Tanzanian_Opportunities/security/advisories/new
+- **Infrastructure, docs, or if unsure:** https://github.com/Tanzanian-Opportunities/TDOP-docs/security/advisories/new
 
 ### 2.2 Alternative channels
 

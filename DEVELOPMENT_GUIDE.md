@@ -57,7 +57,6 @@ Docker build contexts (`../TDOP-backend`, `../TDOP-frontend`) depend on this lay
 
 ```text
 github.com/Tanzanian-Opportunities/
-├── Tanzanian_Opportunities/    umbrella index: README (repository map), links
 ├── TDOP-backend/               Java 21 / Spring Boot API
 │   ├── src/main/java/tdop/
 │   │   ├── controller/         REST controllers (admin/, organization/, trust/)

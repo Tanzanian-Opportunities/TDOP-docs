@@ -2,7 +2,7 @@
 
 **Project:** Tanzania Digital Opportunity Platform (TDOP)
 **Repository:** https://github.com/Tanzanian-Opportunities/TDOP-docs (governance and project management)
-**Component repositories:** [`Tanzanian_Opportunities`](https://github.com/Tanzanian-Opportunities/Tanzanian_Opportunities) (umbrella index) · [`TDOP-backend`](https://github.com/Tanzanian-Opportunities/TDOP-backend) · [`TDOP-frontend`](https://github.com/Tanzanian-Opportunities/TDOP-frontend) · [`TDOP-infra`](https://github.com/Tanzanian-Opportunities/TDOP-infra) · [`TDOP-mobile`](https://github.com/Tanzanian-Opportunities/TDOP-mobile) · [`TDOP-docs`](https://github.com/Tanzanian-Opportunities/TDOP-docs)
+**Component repositories:** [`TDOP-backend`](https://github.com/Tanzanian-Opportunities/TDOP-backend) · [`TDOP-frontend`](https://github.com/Tanzanian-Opportunities/TDOP-frontend) · [`TDOP-infra`](https://github.com/Tanzanian-Opportunities/TDOP-infra) · [`TDOP-mobile`](https://github.com/Tanzanian-Opportunities/TDOP-mobile) · [`TDOP-docs`](https://github.com/Tanzanian-Opportunities/TDOP-docs)
 **Live Kanban board:** https://github.com/orgs/Tanzanian-Opportunities/projects/1
 
 > **This file is the authoritative, live source of truth for TDOP project progress.**
@@ -33,8 +33,8 @@ boards) · [`EXISTING_IMPLEMENTATION_AUDIT.md`](EXISTING_IMPLEMENTATION_AUDIT.md
 | Current Phase | PHASE 01 — Project Initiation (Completed) |
 | Overall Status | PHASE 01 COMPLETED → PHASE 02 READY |
 | Overall Progress | 8% |
-| Current Session | Session 04 |
-| Last Updated | 2026-09-30 (Session 04) |
+| Current Session | Session 05 |
+| Last Updated | 2026-09-30 (Session 05) |
 | Current Objective | Phase 01 closed; next objective: requirements baseline (PHASE 02, not yet started) |
 | Current Blocker | None |
 | Next Action | Begin PHASE 02 — Requirements Engineering (P02-T01) when its work cycle starts |
@@ -51,7 +51,7 @@ boards) · [`EXISTING_IMPLEMENTATION_AUDIT.md`](EXISTING_IMPLEMENTATION_AUDIT.md
 | Short name | TDOP |
 | Purpose | Connect opportunity seekers with trusted opportunities and organizations through discovery, verification, moderation, application tracking, notifications, personalization, governance, analytics, and (later) intelligent and externally sourced opportunity services |
 | Priorities | Trust · Opportunity discovery · Verification · Transparency · Security · Accessibility · Reliability · Maintainability · Explainability · User privacy · Responsible technology |
-| Repository layout | Multi-repository organization [`Tanzanian-Opportunities`](https://github.com/Tanzanian-Opportunities): `TDOP-backend` (Java 21, Spring Boot 3.3, PostgreSQL, Flyway, Nginx edge proxy) · `TDOP-frontend` (React 18, TypeScript, Vite, Tailwind) · `TDOP-infra` (Docker Compose, Cloudflare edge) · `TDOP-docs` (governance, specs, this file) · `TDOP-mobile` (Flutter/Dart, planned) · `Tanzanian_Opportunities` (umbrella index) |
+| Repository layout | Multi-repository organization [`Tanzanian-Opportunities`](https://github.com/Tanzanian-Opportunities): `TDOP-backend` (Java 21, Spring Boot 3.3, PostgreSQL, Flyway, Nginx edge proxy) · `TDOP-frontend` (React 18, TypeScript, Vite, Tailwind) · `TDOP-infra` (Docker Compose, Cloudflare edge) · `TDOP-docs` (governance, specs, project overview, this file) · `TDOP-mobile` (Flutter/Dart, planned); the former `Tanzanian_Opportunities` umbrella index was dissolved (DEC-012) |
 | License | MIT (`LICENSE`, declared in `README.md`) — see Decision DEC-001 |
 
 ### 1.2 Governance document set
@@ -474,6 +474,76 @@ Maintainer (repository owner) with AI coding-assist session.
 
 ---
 
+### Session 05
+
+Date: 2026-09-30
+
+Phase:
+PHASE 01 - Project Initiation (already `Completed`; this session is owner-directed
+repository maintenance outside the phase task list, like Sessions 02-04)
+
+Objective:
+Execute the owner directive to remove the important data from the
+`Tanzanian_Opportunities` umbrella repository, move it into `TDOP-docs`, and then
+delete the umbrella repository (Decision DEC-012).
+
+Tasks Started:
+- None from the 177-task set (owner-directed maintenance; no task states changed,
+  no phase reopened).
+
+Tasks Completed:
+- None from the 177-task set.
+
+Files Changed:
+- `TDOP-docs`: new `PROJECT_OVERVIEW.md` absorbing the umbrella README in full
+  (project overview, repository map with stacks, technology stack, implemented /
+  planned status lists, quick start, seeded demo accounts, docker deployment,
+  documentation table, license); `README.md` (repository map drops the umbrella
+  row, DEC-012 note, `PROJECT_OVERVIEW.md` contents row); `DEVELOPMENT_GUIDE.md`
+  (§2 tree line removed); `MAINTAINERS.md` (ownership row replaced); `SECURITY.md`
+  (advisory fallback URL now points to `TDOP-docs`); `README_PRD.md` (related
+  document row repointed); `PROJECT_MANAGEMENT.md` (header, §1.1 layout, DEC-012,
+  this session, Change History); `CHANGELOG.md` (entries for the move and the
+  deletion); issue-template area lists drop "umbrella".
+- `TDOP-backend`, `TDOP-frontend`, `TDOP-infra`: README `Related` link "Umbrella
+  index" replaced with a "Project overview" link to
+  `TDOP-docs/PROJECT_OVERVIEW.md`; issue-template area lists updated.
+- `TDOP-mobile`: issue-template area list updated.
+- Umbrella `Tanzanian_Opportunities`: not modified - archived as a git bundle in
+  session storage, then the GitHub repository was deleted; the local clone was
+  removed.
+
+Tests Run:
+- `scripts/validate.ps1` executed after the changes - results in the session
+  report below (must stay OVERALL PASS).
+- Post-deletion verification: GitHub API returns 404 for the deleted repository;
+  every remaining repository's README/links were grepped for
+  `Tanzanian_Opportunities` (live files only - historical session entries are
+  untouched).
+
+Issues Found:
+- Deleting the umbrella repository also deletes its `main` history (the original
+  monorepo history) and the legacy `features/developer-01`/`features/developer-02`
+  branches. Component repositories keep their subtree-split history; a git bundle
+  of the umbrella repository was archived before deletion as a safety net.
+
+Blockers:
+- None.
+
+Decisions Made:
+- DEC-012 - dissolve the umbrella index repository: content moved to
+  `TDOP-docs/PROJECT_OVERVIEW.md`, repository deleted (supersedes the umbrella
+  part of DEC-007).
+
+Next Action:
+PHASE 02 - Requirements Engineering (P02-T01) when its work cycle starts;
+Phase 02 stays `Planned` until then (DEC-008).
+
+Developer / Agent:
+Maintainer (repository owner) with AI coding-assist session.
+
+---
+
 ## 4. Master Roadmap
 
 Official phase sequence — do **not** rename, reorder, remove, merge, or skip phases:
@@ -745,6 +815,7 @@ Status values: `Accepted` · `Proposed` · `Superseded` · `Rejected`.
 | DEC-009 | 2026-09-30 | Production edge topology: **Cloudflare** fronts production (DNS, TLS, CDN, WAF); the Nginx origin proxy lives in `TDOP-backend/nginx.conf`, moved out of `TDOP-infra` | Owner directive: `TDOP-infra` = Compose/environment orchestration plus the Cloudflare edge; the reverse proxy that terminates origin traffic belongs to the backend service | Keep Nginx in `TDOP-infra`; run Cloudflare from `TDOP-infra`; no reverse proxy at all | Amends the infra line of DEC-005; `TDOP-infra/nginx/` removed; `TDOP-backend/nginx.conf` added; README, `DEVELOPMENT_GUIDE.md`, and `SECURITY.md` references updated | 01 | Accepted |
 | DEC-010 | 2026-09-30 | Mobile application stack: **Flutter / Dart** targeting Android and iOS from one codebase | Owner directive after stack review; cross-device coverage without maintaining two native codebases | React Native; separate Kotlin and Swift apps; leaving the stack undecided | `TDOP-mobile` README, the umbrella stack table, and `DEVELOPMENT_GUIDE.md` record Flutter/Dart; the mobile CI skeleton runs only after `pubspec.yaml` exists | 01 | Accepted |
 | DEC-011 | 2026-09-30 | **Single license of record**: the MIT `LICENSE` file lives only in `TDOP-docs`; every component repository links to it instead of carrying a copy | Owner directive: one canonical license file that cannot drift across five copies; each repository README still declares the license | Keep a `LICENSE` copy in every repository; no license file at all | Amends DEC-001; `LICENSE` removed from `TDOP-backend`, `TDOP-frontend`, `TDOP-infra`, `TDOP-mobile`, and the umbrella index; their READMEs and the governance tables link to `TDOP-docs/LICENSE` | 01 | Accepted |
+| DEC-012 | 2026-09-30 | Dissolve the **umbrella index repository** `Tanzanian_Opportunities`: its important content moved to `TDOP-docs/PROJECT_OVERVIEW.md` and the repository (GitHub + local) was deleted; supersedes the umbrella part of DEC-007 | Owner directive: one fewer repository to keep consistent; overview/index duties belong to the source-of-truth repository `TDOP-docs` | Keep the umbrella as an index-only repository; move only part of its content | Live documents no longer reference the deleted repository; component READMEs link to `TDOP-docs/PROJECT_OVERVIEW.md`; SECURITY advisory fallback now points to `TDOP-docs`; repository and its branches removed from GitHub | 01 | Accepted |
 
 ---
 
@@ -762,6 +833,8 @@ Changes to `PROJECT_MANAGEMENT.md` itself (append-only).
 | 2026-09-30 | Session 02 | Organization Kanban board created (`Tanzanian-Opportunities/projects/1`) with 177 task cards and the six official states as columns; card statuses verified equal to this tracker | Maintainer with AI coding-assist |
 | 2026-09-30 | Session 04 | Owner follow-up directives applied across all repositories: single MIT `LICENSE` of record in `TDOP-docs` (DEC-011); `CHANGELOG.md` rewritten per project part with the three-state phase lifecycle (DEC-008); technology-stack tables added to all READMEs; Nginx origin proxy moved `TDOP-infra/nginx/` → `TDOP-backend/nginx.conf` with Cloudflare as production edge (DEC-009); `CODING_STANDARDS.md` and `Specs/SRS.md` added; completion-roadmap section added to `Specs/IMPLEMENTATION & FUTURE ROADMAP.md`; mobile stack fixed as Flutter/Dart (DEC-010) | Maintainer with AI coding-assist |
 | 2026-09-30 | Session 04 | Phase 01 completed: P01-T12 – P01-T15 moved to `DONE` (audit evidence verified 27/27 file references; issue/PR templates and CI skeletons added under `.github/` in every component repository; `MAINTAINERS.md` created); Phase Tracker §5 and the phase records in `TASK_BREAKDOWN.md` converted to the `Planned` / `In progress` / `Completed` lifecycle; dashboard, §2, §8, §16, §17, §18 updated | Maintainer with AI coding-assist |
+| 2026-09-30 | Session 05 | Owner directive executed: umbrella repository content absorbed into `TDOP-docs/PROJECT_OVERVIEW.md` (repository map, technology stack, implementation status, quick start, demo accounts, deployment); all live references to `Tanzanian_Opportunities` removed (DEC-012); repository deleted from GitHub after a local bundle archive | Maintainer with AI coding-assist |
+| 2026-09-30 | Session 05 | Header, §1.1 repository layout, `SECURITY.md` advisory fallback, `DEVELOPMENT_GUIDE.md` tree, `MAINTAINERS.md`, `README_PRD.md`, docs `README.md`, component README Related links, and issue-template area lists updated for the dissolved umbrella; `CHANGELOG.md` entries added | Maintainer with AI coding-assist |
 
 Validation checklist performed for P01-T09:
 

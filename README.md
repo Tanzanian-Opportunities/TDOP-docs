@@ -14,12 +14,15 @@ https://github.com/orgs/Tanzanian-Opportunities/projects/1
 
 | Repository | Contents |
 |---|---|
-| [`Tanzanian_Opportunities`](https://github.com/Tanzanian-Opportunities/Tanzanian_Opportunities) | Umbrella index: overview, technology stacks, links |
 | [`TDOP-backend`](https://github.com/Tanzanian-Opportunities/TDOP-backend) | Java 21 / Spring Boot 3.3 REST API (PostgreSQL, Flyway) + Nginx edge config |
 | [`TDOP-frontend`](https://github.com/Tanzanian-Opportunities/TDOP-frontend) | React 18 / TypeScript / Vite / Tailwind SPA |
 | [`TDOP-infra`](https://github.com/Tanzanian-Opportunities/TDOP-infra) | Docker Compose orchestration, Cloudflare edge |
-| [`TDOP-docs`](https://github.com/Tanzanian-Opportunities/TDOP-docs) | This repository - governance, specs, project management |
+| [`TDOP-docs`](https://github.com/Tanzanian-Opportunities/TDOP-docs) | This repository - governance, specs, project management, project overview |
 | [`TDOP-mobile`](https://github.com/Tanzanian-Opportunities/TDOP-mobile) | Planned mobile application (Flutter / Dart, DEC-010) |
+
+The former `Tanzanian_Opportunities` umbrella index repository was dissolved and
+its content moved into this repository (DEC-012) — start with
+[`PROJECT_OVERVIEW.md`](PROJECT_OVERVIEW.md).
 
 Clone the repositories side by side in one directory — the Docker build contexts
 (`../TDOP-backend`, `../TDOP-frontend`) depend on that layout.
@@ -28,6 +31,7 @@ Clone the repositories side by side in one directory — the Docker build contex
 
 | File | Purpose |
 |---|---|
+| [`PROJECT_OVERVIEW.md`](PROJECT_OVERVIEW.md) | Project overview, repository map, technology stack, quick start, status (absorbed from the former umbrella index, DEC-012) |
 | [`PROJECT_MANAGEMENT.md`](PROJECT_MANAGEMENT.md) | **Live source of truth**: current position, sessions, roadmap, phase tracker, decisions, risks, rules |
 | [`TASK_BREAKDOWN.md`](TASK_BREAKDOWN.md) | Master Kanban (177 tasks) and all 33 phase boards |
 | [`EXISTING_IMPLEMENTATION_AUDIT.md`](EXISTING_IMPLEMENTATION_AUDIT.md) | Inventory of pre-existing code and its actual state (DEC-004) |

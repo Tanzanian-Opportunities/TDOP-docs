@@ -100,6 +100,10 @@ Kanban task states (DEC-008); progress percentages live in
 - **Added** `TASK_BREAKDOWN.md` — Master Kanban (177 tasks) and all 33 phase boards
   extracted from `PROJECT_MANAGEMENT.md` sections 6/7 (original numbering preserved);
   path note for the multi-repository layout.
+- **Added** `PROJECT_OVERVIEW.md` — project overview, repository map with stacks,
+  technology stack, implementation status, quick start, demo accounts, and
+  deployment notes, absorbed in full from the former `Tanzanian_Opportunities`
+  umbrella index README (DEC-012).
 - **Added** `EXISTING_IMPLEMENTATION_AUDIT.md` — inventory of pre-existing code
   extracted from `PROJECT_MANAGEMENT.md` section 16, with path notes.
 - **Added** `Specs/` directory — `TDOP_MASTER_SPEC.md`,
@@ -144,7 +148,12 @@ Kanban task states (DEC-008); progress percentages live in
   to `TDOP-backend`, `CODING_STANDARDS.md` added, Cloudflare recorded as the
   production edge.
 - **Changed** `SECURITY.md` scope now lists `TDOP-infra/` Compose config,
-  `TDOP-backend/nginx.conf`, and the Cloudflare edge configuration.
+  `TDOP-backend/nginx.conf`, and the Cloudflare edge configuration; the advisory
+  fallback URL now points to `TDOP-docs` (DEC-012).
+- **Changed** all live references to the dissolved umbrella repository removed:
+  docs `README.md` repository map, `DEVELOPMENT_GUIDE.md` §2 tree,
+  `MAINTAINERS.md` ownership row, `README_PRD.md` related-documents row,
+  `PROJECT_MANAGEMENT.md` header and §1.1, and the issue-template area lists.
 
 ### TDOP-backend
 
@@ -163,6 +172,9 @@ Kanban task states (DEC-008); progress percentages live in
   absolute cross-repository README links.
 - **Added** `.github/` issue/PR templates and CI skeleton
   `.github/workflows/ci.yml` (JDK 21, `mvn -B test`) (P01-T13/T14).
+- **Changed** README "Related" link: dissolved umbrella index replaced by a
+  `Project overview` link to `TDOP-docs/PROJECT_OVERVIEW.md`; issue templates no
+  longer list "umbrella" as an area (DEC-012).
 - **Removed** `LICENSE` — the single license of record lives in `TDOP-docs`.
 
 ### TDOP-frontend
@@ -175,6 +187,9 @@ Kanban task states (DEC-008); progress percentages live in
 - **Fixed** `src/tests/App.test.tsx` now renders `App` inside the providers
   `main.tsx` provides (`QueryClientProvider`, `I18nextProvider`,
   `ThemeProvider`, `NotificationProvider`); suite green 36/36.
+- **Changed** README "Related" link: dissolved umbrella index replaced by a
+  `Project overview` link to `TDOP-docs/PROJECT_OVERVIEW.md`; issue templates no
+  longer list "umbrella" as an area (DEC-012).
 - **Changed** CI lint step is `continue-on-error` until an ESLint config exists
   (lint gate activates with its owning phase); test step is blocking and passing.
 - **Removed** `LICENSE` — the single license of record lives in `TDOP-docs`.
@@ -194,6 +209,9 @@ Kanban task states (DEC-008); progress percentages live in
   `.github/workflows/ci.yml` (`docker compose config` validation) (P01-T13/T14).
 - **Infrastructure** CI supplies throwaway `POSTGRES_PASSWORD` / `JWT_SECRET`
   placeholders so `${VAR:?}` interpolation resolves during config validation.
+- **Changed** README "Related" link: dissolved umbrella index replaced by a
+  `Project overview` link to `TDOP-docs/PROJECT_OVERVIEW.md`; issue templates no
+  longer list "umbrella" as an area (DEC-012).
 - **Security:** `check_db.ps1` contained a plaintext database password; scrubbed to
   an environment-variable prompt (`PGPASSWORD`).
 
@@ -205,8 +223,16 @@ Kanban task states (DEC-008); progress percentages live in
 - **Changed** README now records the decided mobile stack: **Flutter / Dart**,
   one codebase for Android and iOS (DEC-010).
 - **Removed** `LICENSE` — the single license of record lives in `TDOP-docs`.
+- **Changed** issue templates no longer list "umbrella" as an area (DEC-012).
 
 ### Tanzanian_Opportunities (umbrella index)
+
+- **Removed** the repository itself: dissolved and deleted on owner decision
+  (DEC-012). Its important content (overview, repository map, technology stack,
+  implementation status, quick start, demo accounts, deployment) moved to
+  `TDOP-docs/PROJECT_OVERVIEW.md` before deletion; a git bundle of the full
+  history (including legacy `features/developer-*` branches) was archived in
+  session storage as a safety net.
 
 - **Changed** README rewritten as the repository-map index: repository table with
   technology stacks, project-wide technology stack section (including Cloudflare),

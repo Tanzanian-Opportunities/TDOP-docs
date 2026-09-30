@@ -475,6 +475,6 @@ Where useful, wording such as "target architecture" and "current repository impl
 
 | Document | Purpose |
 |---|---|
-| `README.md` (umbrella `Tanzanian_Opportunities`) | Repository overview, quick start |
+| `PROJECT_OVERVIEW.md` (this repository) | Project overview, repository map, quick start (absorbed from the former umbrella `README.md`, DEC-012) |
 | `Specs/TDOP_MASTER_SPEC.md` | Architecture and implementation specification |
 | `Specs/IMPLEMENTATION & FUTURE ROADMAP.md` | Detailed roadmap and future expansion guide |
