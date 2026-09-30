@@ -433,6 +433,11 @@ Tests Run:
 - Kanban board mirrored via the GitHub API: P01-T12 - P01-T15 moved to `DONE`;
   verified totals = 177 cards, 162 `BACKLOG` / 15 `DONE`, 0 in every other
   column - equal to `TASK_BREAKDOWN.md`.
+- First CI runs on `develop`: all five workflows green - `TDOP-docs` (validator),
+  `TDOP-backend` (`mvn test`), `TDOP-frontend` (lint non-blocking + tests,
+  36/36 after fixing `App.test.tsx` provider wrapping), `TDOP-infra` (compose
+  config with CI placeholder env vars), `TDOP-mobile` (Flutter gate, no
+  `pubspec.yaml` yet).
 
 Issues Found:
 - Exact-match file edits on documentation repeatedly failed on em dash (U+2014)

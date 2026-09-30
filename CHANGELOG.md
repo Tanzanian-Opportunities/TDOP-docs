@@ -172,6 +172,11 @@ Kanban task states (DEC-008); progress percentages live in
 - **Added** portable development helper `run_frontend.bat`.
 - **Added** `.github/` issue/PR templates and CI skeleton
   `.github/workflows/ci.yml` (`npm ci`, lint, test) (P01-T13/T14).
+- **Fixed** `src/tests/App.test.tsx` now renders `App` inside the providers
+  `main.tsx` provides (`QueryClientProvider`, `I18nextProvider`,
+  `ThemeProvider`, `NotificationProvider`); suite green 36/36.
+- **Changed** CI lint step is `continue-on-error` until an ESLint config exists
+  (lint gate activates with its owning phase); test step is blocking and passing.
 - **Removed** `LICENSE` — the single license of record lives in `TDOP-docs`.
 
 ### TDOP-infra
@@ -187,13 +192,16 @@ Kanban task states (DEC-008); progress percentages live in
 - **Removed** `LICENSE` — the single license of record lives in `TDOP-docs`.
 - **Added** `.github/` issue/PR templates and CI skeleton
   `.github/workflows/ci.yml` (`docker compose config` validation) (P01-T13/T14).
+- **Infrastructure** CI supplies throwaway `POSTGRES_PASSWORD` / `JWT_SECRET`
+  placeholders so `${VAR:?}` interpolation resolves during config validation.
 - **Security:** `check_db.ps1` contained a plaintext database password; scrubbed to
   an environment-variable prompt (`PGPASSWORD`).
 
 ### TDOP-mobile
 
 - **Added** initial README, `.gitignore`, `.github/` issue/PR templates, and a CI
-  skeleton that starts Flutter analysis once `pubspec.yaml` exists (P01-T13/T14).
+  skeleton that starts Flutter analysis once `pubspec.yaml` exists (P01-T13/T14);
+  `workflow_dispatch` trigger for manual runs.
 - **Changed** README now records the decided mobile stack: **Flutter / Dart**,
   one codebase for Android and iOS (DEC-010).
 - **Removed** `LICENSE` — the single license of record lives in `TDOP-docs`.
@@ -218,6 +226,9 @@ Kanban task states (DEC-008); progress percentages live in
   `TASK_BREAKDOWN.md` (162 `BACKLOG`, 3 `TO DO`, 1 `IN PROGRESS`, 11 `DONE`).
 - **Changed** Phase 01 closure: the four remaining cards (P01-T12 – P01-T15) moved
   to `DONE`; board now mirrors `TASK_BREAKDOWN.md` at 162 `BACKLOG` / 15 `DONE`.
+- **Infrastructure** first CI runs recorded on `develop`: all five workflows
+  (`TDOP-docs`, `TDOP-backend`, `TDOP-frontend`, `TDOP-infra`, `TDOP-mobile`)
+  completed `success`.
 
 ### Phase closure
 
