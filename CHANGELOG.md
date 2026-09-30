@@ -70,6 +70,17 @@ or project governance must be recorded here in the same change set that introduc
   (`DEVELOPMENT_GUIDE.md` §6, `CONTRIBUTING.md` §4/§6).
 - Documentation cross-references updated for the new layout
   (`Docs/` → `Specs/`, repository structure, clone instructions, board links).
+- Uncommitted backend work-in-progress carried from the monorepo working tree into
+  `TDOP-backend`: JWT and error-handling hardening, H2 test dependency plus surefire
+  test-configuration fix, expanded controller/service test suites and a new
+  `DeadlineReminderRepository`; `mvn test` green (89 tests).
+- Flyway migration version collisions fixed while carrying the WIP: the duplicates
+  `V10__data_integrity_indexes.sql` and `V11__escalations_and_appeals.sql`
+  (clashing with `V10__normalize_application_status` and
+  `V11__email_verification_tokens`) renumbered to `V13`/`V14`.
+- Development helper scripts kept with their component repositories in portable
+  form (`run_backend.ps1`/`run_backend.bat`, `run_frontend.bat`,
+  `check_servers.ps1`).
 
 ### Security
 

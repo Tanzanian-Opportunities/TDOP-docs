@@ -32,8 +32,8 @@ boards) · [`EXISTING_IMPLEMENTATION_AUDIT.md`](EXISTING_IMPLEMENTATION_AUDIT.md
 | Current Phase | PHASE 01 — Project Initiation |
 | Overall Status | IN PROGRESS |
 | Overall Progress | 6% |
-| Current Session | Session 02 |
-| Last Updated | 2026-09-30 13:19 |
+| Current Session | Session 03 |
+| Last Updated | 2026-09-30 13:45 |
 | Current Objective | Establish the project governance and documentation foundation |
 | Current Blocker | None |
 | Next Action | Verify audit evidence (P01-T12), then add issue/PR templates, CI skeleton, and owner/contact definitions (P01-T13 – P01-T15) |
@@ -279,6 +279,73 @@ Decisions Made:
 Next Action:
 Continue P01-T12 (verify every audit row against source files), then P01-T13 –
 P01-T15.
+
+Developer / Agent:
+Maintainer (repository owner) with AI coding-assist session.
+
+---
+
+### Session 03
+
+Date: 2026-09-30
+
+Phase:
+PHASE 01 - Project Initiation
+
+Objective:
+Finish the DEC-007 multi-repository split: assemble `TDOP-docs`, carry the pending
+backend working-tree changes into `TDOP-backend`, give every repository its
+README/LICENSE/branch setup with `develop` as default, and reduce the umbrella to
+its index README.
+
+Tasks Started:
+- None new (same owner-directed restructure outside the phase task list).
+
+Tasks Completed:
+- None from the 177-task set (no task states changed).
+
+Files Changed:
+- `TDOP-docs` assembled and pushed: governance set, `Specs/`, `TASK_BREAKDOWN.md`,
+  `EXISTING_IMPLEMENTATION_AUDIT.md`, slimmed `PROJECT_MANAGEMENT.md`, README index.
+- `TDOP-backend`: uncommitted WIP carried as commits on `develop` (JWT/error-handling
+  hardening, expanded test suites, H2/surefire test fix, new
+  `DeadlineReminderRepository`); duplicate Flyway `V10`/`V11` renumbered to
+  `V13`/`V14`; absolute README links; portable `run_backend.ps1`/`run_backend.bat`;
+  MIT `LICENSE`.
+- `TDOP-frontend`: README links made absolute, portable `run_frontend.bat`,
+  MIT `LICENSE`.
+- `TDOP-infra`: new README (sibling-clone layout, services/environment tables), MIT
+  `LICENSE`, smoke-check helpers `check_db.ps1`/`check_db.sql`/`check_servers.ps1`
+  (plaintext password removed - reads `PGPASSWORD`).
+- `TDOP-mobile`: initial README (stack TBD by design) + `LICENSE` + `.gitignore`.
+- Umbrella `Tanzanian_Opportunities`: content removed (422 paths staged), README
+  rewritten as the repository-map index; local helper-script copies deleted after
+  their portable versions were committed to the component repositories.
+
+Tests Run:
+- `TDOP-backend`: `mvn test` - 89 tests, 0 failures, BUILD SUCCESS (JAVA_HOME set
+  to the local JDK 26 toolchain).
+- Board verified via GitHub API during population: 177 cards, 162 BACKLOG /
+  3 TO DO / 1 IN PROGRESS / 11 DONE.
+- Documentation validator updated for the multi-repository layout and executed
+  (see final session report for results).
+
+Issues Found:
+- The umbrella working tree still carried the backend WIP as uncommitted
+  modifications; it was the live development state, so it was committed to
+  `TDOP-backend` before the umbrella content was removed - nothing was lost.
+- `TDOP-frontend/README.md` used relative sibling links that break on GitHub; fixed
+  to full URLs (backend/infra/docs done the same way).
+
+Blockers:
+- None.
+
+Decisions Made:
+- DEC-007 (continuation): every repository defaults to `develop`; `main` keeps the
+  import snapshot as the release baseline.
+
+Next Action:
+Run P01-T12 - P01-T15 (verify audit rows against source files), then Phase 02.
 
 Developer / Agent:
 Maintainer (repository owner) with AI coding-assist session.
