@@ -1,4 +1,4 @@
-﻿# TDOP Task Breakdown - 177 Tasks / 33 Phases
+# TDOP Task Breakdown - 177 Tasks / 33 Phases
 
 **Project:** Tanzania Digital Opportunity Platform (TDOP)
 **Source:** extracted from [PROJECT_MANAGEMENT.md](PROJECT_MANAGEMENT.md) sections 6 (Master Kanban) and 7 (Phase Kanban Boards); original section numbering is preserved below.
@@ -33,10 +33,10 @@ important · `P3` later/optional. **Owner** — `—` unassigned. Dates are `YYY
 | P01-T09 | 01 | Validate documentation consistency | Existence, phase count, states, cross-refs | P0 | P01-T01 – P01-T08 | DONE | Maintainer | 2026-09-30 | 2026-09-30 | 2026-09-30 | — | — |
 | P01-T10 | 01 | Draft existing-implementation audit | Inventory existing code against 33 phases | P1 | P01-T08 | DONE | Maintainer | 2026-09-30 | 2026-09-30 | 2026-09-30 | — | — |
 | P01-T11 | 01 | Initialize governance logs | Seed decision, risk, and blocker logs | P1 | P01-T08 | DONE | Maintainer | 2026-09-30 | 2026-09-30 | 2026-09-30 | — | — |
-| P01-T12 | 01 | Verify audit evidence | Confirm audit rows against source files | P1 | P01-T10 | IN PROGRESS | Maintainer | 2026-09-30 | 2026-09-30 | — | — | Verify remaining file-level evidence |
-| P01-T13 | 01 | Add issue and PR templates | Create .github issue and PR templates | P1 | P01-T06 | TO DO | — | 2026-09-30 | — | — | — | Schedule in Session 02 |
-| P01-T14 | 01 | Add CI skeleton | Build, lint, test workflow in .github/workflows | P1 | P01-T07 | TO DO | — | 2026-09-30 | — | — | — | Schedule in Session 02 |
-| P01-T15 | 01 | Define owners and contacts | Maintainer roles and [TBD] contact placeholders | P2 | — | TO DO | — | 2026-09-30 | — | — | — | Owner fills placeholders |
+| P01-T12 | 01 | Verify audit evidence | Confirm audit rows against source files | P1 | P01-T10 | DONE | Maintainer | 2026-09-30 | 2026-09-30 | 2026-09-30 | — | — |
+| P01-T13 | 01 | Add issue and PR templates | Create .github issue and PR templates | P1 | P01-T06 | DONE | Maintainer | 2026-09-30 | 2026-09-30 | 2026-09-30 | — | — |
+| P01-T14 | 01 | Add CI skeleton | Build, lint, test workflow in .github/workflows | P1 | P01-T07 | DONE | Maintainer | 2026-09-30 | 2026-09-30 | 2026-09-30 | — | — |
+| P01-T15 | 01 | Define owners and contacts | Maintainer roles and [TBD] contact placeholders | P2 | — | DONE | Maintainer | 2026-09-30 | 2026-09-30 | 2026-09-30 | — | — |
 
 ### PHASE 02 — Requirements Engineering
 
@@ -379,8 +379,8 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** All governance documents created; entries added to `CHANGELOG.md`.
 **Security considerations:** `SECURITY.md` and `SECURITY_STANDARDS.md` created; no secrets or invented contact details in any document.
 **Exit criteria:** P01-T01 – P01-T15 all DONE; validation passed; no open blockers.
-**Status:** IN PROGRESS · **Current progress:** 75% · **Blockers:** None
-**Next action:** Complete P01-T12, then P01-T13 – P01-T15.
+**Status:** Completed · **Current progress:** 100% · **Blockers:** None
+**Next action:** Phase 01 complete; begin PHASE 02 - Requirements Engineering under the phase-start rule.
 
 #### BACKLOG
 | ID | Task | Priority | Dependency |
@@ -388,22 +388,18 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 #### TO DO
 | ID | Task | Priority | Dependency |
 |---|---|---|---|
-| P01-T13 | Add issue and PR templates | P1 | P01-T06 |
-| P01-T14 | Add CI skeleton | P1 | P01-T07 |
-| P01-T15 | Define owners and contacts | P2 | — |
 #### IN PROGRESS
 | ID | Task | Owner | Started |
 |---|---|---|---|
-| P01-T12 | Verify audit evidence | Maintainer | 2026-09-30 |
 #### CODE REVIEW
 | ID | Task | Reviewer |
-|---|---|---|
+|---|---|
 #### TESTING
 | ID | Task | Test |
-|---|---|---|
+|---|---|
 #### DONE
 | ID | Task | Completed |
-|---|---|---|
+|---|---|
 | P01-T01 | Formalize MIT license | 2026-09-30 |
 | P01-T02 | Create changelog | 2026-09-30 |
 | P01-T03 | Create code of conduct | 2026-09-30 |
@@ -415,6 +411,10 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 | P01-T09 | Validate documentation consistency | 2026-09-30 |
 | P01-T10 | Draft existing-implementation audit | 2026-09-30 |
 | P01-T11 | Initialize governance logs | 2026-09-30 |
+| P01-T12 | Verify audit evidence | 2026-09-30 |
+| P01-T13 | Add issue and PR templates | 2026-09-30 |
+| P01-T14 | Add CI skeleton | 2026-09-30 |
+| P01-T15 | Define owners and contacts | 2026-09-30 |
 
 > Phase 01 tasks are documentation-only; for them the Definition of Done applies with
 > tests marked not-applicable and "code review" performed as a documentation
@@ -432,7 +432,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Requirements baseline added under `Docs/`; `CHANGELOG.md` entry.
 **Security considerations:** Security and privacy requirements captured by reference to `SECURITY_STANDARDS.md`.
 **Exit criteria:** P02-T01 – P02-T06 all DONE; sign-off recorded in the Decision Log.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 01 exits.
 
 #### BACKLOG
@@ -472,7 +472,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Analysis documents under `Docs/`; `CHANGELOG.md` entry.
 **Security considerations:** Security-relevant gaps recorded in the Risk Register.
 **Exit criteria:** P03-T01 – P03-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 02 exits.
 
 #### BACKLOG
@@ -511,7 +511,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** `Docs/TDOP_MASTER_SPEC.md` alignment; Decision Log entries in this file.
 **Security considerations:** Architecture reviewed against the applicable sections of `SECURITY_STANDARDS.md`.
 **Exit criteria:** P04-T01 – P04-T05 all DONE; review sign-off recorded.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 03 exits.
 
 #### BACKLOG
@@ -550,7 +550,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Database design document and migration conventions; `CHANGELOG.md` (`Database`) entries for later changes.
 **Security considerations:** Least-privilege database accounts, secret handling, and personal-data retention rules.
 **Exit criteria:** P05-T01 – P05-T06 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 04 exits.
 
 #### BACKLOG
@@ -590,7 +590,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** springdoc/OpenAPI output and `Docs/TDOP_MASTER_SPEC.md` updated; `CHANGELOG.md` entry.
 **Security considerations:** Authentication/authorization requirement noted for every endpoint.
 **Exit criteria:** P06-T01 – P06-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 05 exits.
 
 #### BACKLOG
@@ -629,7 +629,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** `README.md` and `DEVELOPMENT_GUIDE.md` setup sections verified and corrected.
 **Security considerations:** `.env.example` files contain placeholders only; `.env` remains git-ignored.
 **Exit criteria:** P07-T01 – P07-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 06 exits.
 
 #### BACKLOG
@@ -668,7 +668,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** `DEVELOPMENT_GUIDE.md` backend sections verified; `CHANGELOG.md` entries.
 **Security considerations:** No secrets in configuration; error responses expose no internals (standards §3.4).
 **Exit criteria:** P08-T01 – P08-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 07 exits.
 
 #### BACKLOG
@@ -707,7 +707,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** `DEVELOPMENT_GUIDE.md` frontend sections verified; `CHANGELOG.md` entries.
 **Security considerations:** No secrets in `VITE_*` variables; route guards complement (never replace) server authorization.
 **Exit criteria:** P09-T01 – P09-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 07 exits.
 
 #### BACKLOG
@@ -746,7 +746,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Auth sections of `Docs/TDOP_MASTER_SPEC.md` verified; `CHANGELOG.md` `Security` entry.
 **Security considerations:** `SECURITY_STANDARDS.md` §1–§2 are binding for this phase.
 **Exit criteria:** P10-T01 – P10-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 08 and PHASE 09 exit.
 
 #### BACKLOG
@@ -785,7 +785,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Profile sections of spec/PRD verified; `CHANGELOG.md` entry.
 **Security considerations:** `SECURITY_STANDARDS.md` §3 upload rules and ownership checks apply.
 **Exit criteria:** P11-T01 – P11-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 10 exits.
 
 #### BACKLOG
@@ -824,7 +824,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Trust/organization spec sections verified; `CHANGELOG.md` entry.
 **Security considerations:** Tenant isolation and least-privilege team roles (`SECURITY_STANDARDS.md` §2.2).
 **Exit criteria:** P12-T01 – P12-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 11 exits.
 
 #### BACKLOG
@@ -863,7 +863,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Lifecycle sections of spec/PRD verified; `CHANGELOG.md` entries.
 **Security considerations:** Ownership checks on opportunity management; moderation access control.
 **Exit criteria:** P13-T01 – P13-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 12 exits.
 
 #### BACKLOG
@@ -902,7 +902,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Trust sections of spec/PRD verified; `CHANGELOG.md` entry.
 **Security considerations:** Role-restricted trust actions; audit records are append-only.
 **Exit criteria:** P14-T01 – P14-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 13 exits.
 
 #### BACKLOG
@@ -941,7 +941,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Discovery sections of spec/PRD verified; `CHANGELOG.md` entry.
 **Security considerations:** Rate limiting on search endpoints; no cross-tenant data leakage via search.
 **Exit criteria:** P15-T01 – P15-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 13 exits.
 
 #### BACKLOG
@@ -980,7 +980,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Application sections of spec/PRD verified; `CHANGELOG.md` entry.
 **Security considerations:** Ownership checks; applicants' personal data visible only to permitted parties.
 **Exit criteria:** P16-T01 – P16-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 13 exits.
 
 #### BACKLOG
@@ -1019,7 +1019,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Notification sections of spec/PRD verified; `CHANGELOG.md` entry.
 **Security considerations:** No personal data in logs; preference enforcement; template injection safety.
 **Exit criteria:** P17-T01 – P17-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 16 exits.
 
 #### BACKLOG
@@ -1058,7 +1058,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Deadline/freshness documentation; `CHANGELOG.md` entry.
 **Security considerations:** Jobs run with least-privilege credentials; no reminder spam or token leakage.
 **Exit criteria:** P18-T01 – P18-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 13 exits.
 
 #### BACKLOG
@@ -1097,7 +1097,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Matching/personalization sections of spec; `CHANGELOG.md` entry.
 **Security considerations:** Only permitted profile data may feed personalization (standards §8).
 **Exit criteria:** P19-T01 – P19-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 15 exits.
 
 #### BACKLOG
@@ -1136,7 +1136,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Governance policies documented; spec admin sections verified; `CHANGELOG.md` entry.
 **Security considerations:** `SECURITY_STANDARDS.md` §2 boundaries between ADMIN and SUPER_ADMIN.
 **Exit criteria:** P20-T01 – P20-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 14 exits.
 
 #### BACKLOG
@@ -1175,7 +1175,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Analytics/outcome spec sections; `CHANGELOG.md` entry.
 **Security considerations:** Aggregation and minimization per `SECURITY_STANDARDS.md` §8.
 **Exit criteria:** P21-T01 – P21-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 20 exits.
 
 #### BACKLOG
@@ -1214,7 +1214,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Data-quality and source-management spec; `CHANGELOG.md` entry.
 **Security considerations:** Sanitization prevents stored XSS; ingestion inputs validated (standards §3.2).
 **Exit criteria:** P22-T01 – P22-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 21 exits.
 
 #### BACKLOG
@@ -1253,7 +1253,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Ingestion spec and source-attribution documentation; `CHANGELOG.md` entry.
 **Security considerations:** SSRF protection, payload-size limits, egress controls (`SECURITY_STANDARDS.md` §7).
 **Exit criteria:** P23-T01 – P23-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 22 exits.
 
 #### BACKLOG
@@ -1292,7 +1292,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** AI policy and spec sections; `CHANGELOG.md` entry.
 **Security considerations:** Privacy/fairness constraints; third-party model data use requires a Decision Log entry.
 **Exit criteria:** P24-T01 – P24-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 19 and PHASE 23 exit.
 
 #### BACKLOG
@@ -1331,7 +1331,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Channel architecture documentation; `CHANGELOG.md` entry.
 **Security considerations:** Provider credentials in environment only; user opt-in consent recorded.
 **Exit criteria:** P25-T01 – P25-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 17 exits.
 
 #### BACKLOG
@@ -1370,7 +1370,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Plans/pricing documentation; `CHANGELOG.md` entries (incl. `Breaking` if API changes).
 **Security considerations:** Never store card data directly; payment provider handled per their standards (§8 of `SECURITY_STANDARDS.md`).
 **Exit criteria:** P26-T01 – P26-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 20 exits.
 
 #### BACKLOG
@@ -1409,7 +1409,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** `SECURITY.md`/`SECURITY_STANDARDS.md` updated; `CHANGELOG.md` `Security` entries.
 **Security considerations:** This phase is security — all sections of `SECURITY_STANDARDS.md` apply.
 **Exit criteria:** P27-T01 – P27-T05 all DONE; zero open critical/high findings.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 26 exits.
 
 #### BACKLOG
@@ -1448,7 +1448,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Test reports stored under `Docs/`; `CHANGELOG.md` entries.
 **Security considerations:** Security regression tests from PHASE 10/27 remain green.
 **Exit criteria:** P28-T01 – P28-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 27 exits.
 
 #### BACKLOG
@@ -1487,7 +1487,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Performance report and tuning notes; `CHANGELOG.md` (`Infrastructure`) entries.
 **Security considerations:** DoS protections and rate limits verified under load.
 **Exit criteria:** P29-T01 – P29-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 28 exits.
 
 #### BACKLOG
@@ -1526,7 +1526,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Runbooks and `Docs/DEPLOYMENT_CHECKLIST.md` validated; `CHANGELOG.md` (`Infrastructure`) entries.
 **Security considerations:** Secrets management and least-privilege deploy credentials (`SECURITY_STANDARDS.md` §6).
 **Exit criteria:** P30-T01 – P30-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 29 exits.
 
 #### BACKLOG
@@ -1565,7 +1565,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Beta report under `Docs/`; `CHANGELOG.md` entries for fixes.
 **Security considerations:** Beta data handling rules; no production secrets in the beta environment.
 **Exit criteria:** P31-T01 – P31-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 30 exits.
 
 #### BACKLOG
@@ -1604,7 +1604,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** `README.md` status and release notes; `CHANGELOG.md` release section dated.
 **Security considerations:** Demo/seed accounts removed; HTTPS enforced; backups verified; secrets rotated if needed.
 **Exit criteria:** P32-T01 – P32-T05 all DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 31 exits.
 
 #### BACKLOG
@@ -1643,7 +1643,7 @@ official states. Phases not yet started carry all tasks in `BACKLOG`.
 **Documentation requirements:** Continuous documentation upkeep; `CHANGELOG.md` updated per release.
 **Security considerations:** Regular dependency scanning, patching, and security review cadence.
 **Exit criteria:** Continuous phase — exit reviewed quarterly; all current-cycle tasks DONE.
-**Status:** BACKLOG · **Current progress:** 0% · **Blockers:** None
+**Status:** Planned · **Current progress:** 0% · **Blockers:** None
 **Next action:** Begin when PHASE 32 exits.
 
 #### BACKLOG

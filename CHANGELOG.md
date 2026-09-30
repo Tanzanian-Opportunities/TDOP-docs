@@ -11,15 +11,70 @@ or project governance must be recorded here in the same change set that introduc
 
 ## How to update this file
 
-1. Add your entries under the `[Unreleased]` section, inside the correct category.
+1. `[Unreleased]` is grouped **by project part** (repository, board, or governance
+   unit). Record each change under the part it happened in, so every part's history
+   is visible at a glance.
 2. Each entry should be a short, factual bullet. Start with a verb (`Add`, `Change`,
    `Fix`, `Remove`, `Deprecate`, `Secure`).
-3. When a release is cut (git tag `vX.Y.Z`), move everything from `[Unreleased]` into
-   a new section `## [X.Y.Z] — YYYY-MM-DD` and start a fresh empty `[Unreleased]`.
-4. Breaking changes and security changes must always be listed explicitly — never
-   bury them inside unrelated bullets.
-5. Documentation-only changes belong under `Documentation`. Governance documents
-   (`CONTRIBUTING.md`, `PROJECT_MANAGEMENT.md`, `SECURITY*.md`, …) count as changes.
+3. Security-relevant changes must start with **`Security:`** so they can never be
+   buried inside unrelated bullets.
+4. **Phase lifecycle (3 steps):** the `Phase completion status` table below tracks
+   every phase as `Planned` → `In progress` → `Completed`. This lifecycle is
+   **independent of the six-state task Kanban** (DEC-008).
+   - When a phase starts being implemented, its row becomes `In progress`.
+   - When a phase is fully done, its row becomes `Completed` **and** a consolidated
+     phase-closure entry is added (under the release section that finishes the phase)
+     summarizing the phase's final changes for every part — then work moves to the
+     next phase, whose row flips from `Planned` to `In progress`.
+   - All remaining phases stay `Planned` until their start criteria are met.
+5. When a release is cut (git tag `vX.Y.Z`), move everything from `[Unreleased]` into
+   a new section `## [X.Y.Z] — YYYY-MM-DD` (including any phase-closure summaries)
+   and start a fresh empty `[Unreleased]`.
+6. Documentation-only changes belong in the owning part under `Documentation`.
+   Governance documents (`CONTRIBUTING.md`, `PROJECT_MANAGEMENT.md`, `SECURITY*.md`, …)
+   count as changes.
+
+## Phase completion status
+
+3-step lifecycle per phase: **Planned → In progress → Completed**. Independent of the
+Kanban task states (DEC-008); progress percentages live in
+`PROJECT_MANAGEMENT.md` §5.
+
+| Phase | Name | Status |
+|---|---|---|
+| 01 | Project Initiation | Completed |
+| 02 | Requirements Engineering | Planned |
+| 03 | System Analysis | Planned |
+| 04 | System Architecture | Planned |
+| 05 | Database Design | Planned |
+| 06 | API & Contract Design | Planned |
+| 07 | Development Environment | Planned |
+| 08 | Backend Foundation | Planned |
+| 09 | Frontend Foundation | Planned |
+| 10 | Authentication & Authorization | Planned |
+| 11 | User & Profile Module | Planned |
+| 12 | Organization Module | Planned |
+| 13 | Opportunity Core | Planned |
+| 14 | Trust & Verification | Planned |
+| 15 | Discovery & Search | Planned |
+| 16 | Application Engine | Planned |
+| 17 | Notification System | Planned |
+| 18 | Deadline & Freshness | Planned |
+| 19 | Personalization & Matching | Planned |
+| 20 | Administration & Governance | Planned |
+| 21 | Analytics & Outcomes | Planned |
+| 22 | Advanced Data Quality & Source Management | Planned |
+| 23 | External Opportunity Ingestion | Planned |
+| 24 | Advanced Intelligence / AI | Planned |
+| 25 | Communication Expansion | Planned |
+| 26 | Subscription / Business Model | Planned |
+| 27 | Complete Security Hardening | Planned |
+| 28 | Complete Testing | Planned |
+| 29 | Performance & Reliability | Planned |
+| 30 | Deployment & CI/CD | Planned |
+| 31 | Beta Release | Planned |
+| 32 | Production Launch | Planned |
+| 33 | Continuous Improvement | Planned |
 
 ## Categories
 
@@ -32,7 +87,7 @@ or project governance must be recorded here in the same change set that introduc
 | `Fixed` | Bug fixes |
 | `Security` | Vulnerability fixes, hardening, security-relevant changes |
 | `Breaking` | Backward-incompatible API, schema, or configuration changes |
-| `Infrastructure` | CI/CD, Docker, Nginx, environment, tooling changes |
+| `Infrastructure` | CI/CD, Docker, Nginx, Cloudflare, environment, tooling changes |
 | `Database` | Flyway migrations, schema, seed-data changes |
 | `Documentation` | README, specs, guides, governance documents |
 
@@ -40,52 +95,150 @@ or project governance must be recorded here in the same change set that introduc
 
 ## [Unreleased]
 
-### Added
+### TDOP-docs
 
-- `TASK_BREAKDOWN.md` — Master Kanban (177 tasks) and all 33 phase boards extracted
-  from `PROJECT_MANAGEMENT.md` sections 6/7 (original numbering preserved); path
-  note added for the multi-repository layout.
-- `EXISTING_IMPLEMENTATION_AUDIT.md` — inventory of pre-existing code extracted from
-  `PROJECT_MANAGEMENT.md` section 16, with path notes for the component repositories.
-- `Specs/` directory — `TDOP_MASTER_SPEC.md`, `IMPLEMENTATION & FUTURE ROADMAP.md`
-  (+ `.docx`), and `DEPLOYMENT_CHECKLIST.md` moved from the old `Docs/` layout.
-- Organization GitHub Projects Kanban board
-  (`https://github.com/orgs/Tanzanian-Opportunities/projects/1`, view
-  `Kanban Board`) with all 177 tasks as cards and the six official states as
-  columns; card statuses verified equal to `TASK_BREAKDOWN.md`
-  (162 `BACKLOG`, 3 `TO DO`, 1 `IN PROGRESS`, 11 `DONE`).
-
-### Changed
-
-- **Repository restructured into component repositories** (Decision DEC-007):
-  `TDOP-backend`, `TDOP-frontend`, `TDOP-infra`, `TDOP-docs`, and `TDOP-mobile`
-  created under the `Tanzanian-Opportunities` organization with history preserved
-  via `git subtree split`; `Tanzanian_Opportunities` remains as the umbrella index
-  repository. Governance set, `README_PRD.md`, and `LICENSE` now live in
-  `TDOP-docs`.
-- `PROJECT_MANAGEMENT.md` slimmed to the live tracker (sessions, phases, logs,
-  decisions, rules); task boards and the audit moved to the new files above.
-- Branch strategy updated for every repository: `develop` is the default/integration
-  branch, `main` holds releases; PRs target `develop`
+- **Added** `TASK_BREAKDOWN.md` — Master Kanban (177 tasks) and all 33 phase boards
+  extracted from `PROJECT_MANAGEMENT.md` sections 6/7 (original numbering preserved);
+  path note for the multi-repository layout.
+- **Added** `EXISTING_IMPLEMENTATION_AUDIT.md` — inventory of pre-existing code
+  extracted from `PROJECT_MANAGEMENT.md` section 16, with path notes.
+- **Added** `Specs/` directory — `TDOP_MASTER_SPEC.md`,
+  `IMPLEMENTATION & FUTURE ROADMAP.md` (+ `.docx`), and `DEPLOYMENT_CHECKLIST.md`
+  moved from the old `Docs/` layout.
+- **Added** `CODING_STANDARDS.md` — binding coding standards for the Java/Spring
+  backend, React/TypeScript frontend, SQL/Flyway, i18n, testing, and Git workflow.
+- **Added** `Specs/SRS.md` — Software Requirements Specification draft (scope,
+  actors, constraints, FR/NFR requirements, traceability) as the Phase 02
+  requirements-baseline input.
+- **Added** `MAINTAINERS.md` — ownership, roles, and contact points; `[TBD]`
+  placeholders in `SECURITY.md` and `CODE_OF_CONDUCT.md` now point here (P01-T15).
+- **Added** `scripts/validate.ps1` — repository-relative documentation consistency
+  validator (governance files, 33-phase order, 177 unique task IDs, state
+  vocabulary, phase lifecycle) used locally and by CI (P01-T09).
+- **Added** `.github/` issue templates (`bug_report`, `feature_request`) and
+  `pull_request_template.md` for every repository (P01-T13).
+- **Added** completion roadmap section at the top of
+  `Specs/IMPLEMENTATION & FUTURE ROADMAP.md` — the clear 33-phase path to completion
+  with per-phase status.
+- **Added** this file's `Phase completion status` table (3-step phase lifecycle,
+  independent of the Kanban) and the per-part change-grouping convention (DEC-008).
+- **Changed** `PROJECT_MANAGEMENT.md` slimmed to the live tracker (sessions, phases,
+  logs, decisions, rules); task boards and the audit moved to the new files above.
+- **Changed** branch strategy for every repository: `develop` is the
+  default/integration branch, `main` holds releases; PRs target `develop`
   (`DEVELOPMENT_GUIDE.md` §6, `CONTRIBUTING.md` §4/§6).
-- Documentation cross-references updated for the new layout
-  (`Docs/` → `Specs/`, repository structure, clone instructions, board links).
-- Uncommitted backend work-in-progress carried from the monorepo working tree into
-  `TDOP-backend`: JWT and error-handling hardening, H2 test dependency plus surefire
+- **Changed** documentation cross-references for the new layout (`Docs/` → `Specs/`,
+  repository structure, clone instructions, board links).
+- **Changed** `LICENSE` consolidated here as the single license of record for all
+  repositories (DEC-011); removed from every other repository.
+- **Changed** `PROJECT_MANAGEMENT.md` Session 04 recorded; DEC-008 (phase
+  lifecycle), DEC-009 (Cloudflare edge / Nginx origin), DEC-010 (Flutter mobile
+  stack), DEC-011 (single license) added; Phase Tracker §5, dashboard, §2, §8,
+  §16–§18 converted to the `Planned` / `In progress` / `Completed` lifecycle.
+- **Changed** `TASK_BREAKDOWN.md` P01-T12 – P01-T15 moved to `DONE`; all 33 phase
+  record statuses converted to the phase lifecycle vocabulary.
+- **Changed** `EXISTING_IMPLEMENTATION_AUDIT.md` evidence verification (P01-T12):
+  all 27 file-path references resolved against the component-repository clones —
+  27 found, 0 missing.
+- **Changed** `DEVELOPMENT_GUIDE.md` repository tree updated: Nginx edge config moved
+  to `TDOP-backend`, `CODING_STANDARDS.md` added, Cloudflare recorded as the
+  production edge.
+- **Changed** `SECURITY.md` scope now lists `TDOP-infra/` Compose config,
+  `TDOP-backend/nginx.conf`, and the Cloudflare edge configuration.
+
+### TDOP-backend
+
+- **Changed** uncommitted backend work-in-progress carried from the monorepo working
+  tree: JWT and error-handling hardening, H2 test dependency plus surefire
   test-configuration fix, expanded controller/service test suites and a new
   `DeadlineReminderRepository`; `mvn test` green (89 tests).
-- Flyway migration version collisions fixed while carrying the WIP: the duplicates
+- **Fixed** Flyway migration version collisions: the duplicate
   `V10__data_integrity_indexes.sql` and `V11__escalations_and_appeals.sql`
   (clashing with `V10__normalize_application_status` and
   `V11__email_verification_tokens`) renumbered to `V13`/`V14`.
-- Development helper scripts kept with their component repositories in portable
-  form (`run_backend.ps1`/`run_backend.bat`, `run_frontend.bat`,
-  `check_servers.ps1`).
+- **Added** `nginx.conf` — the deployment Nginx edge proxy (rate-limited `/api`,
+  `/ws`, `/swagger-ui`, `/health`, SPA static fallback, security headers) moved here
+  from `TDOP-infra/nginx/` (DEC-009).
+- **Added** portable development helpers `run_backend.ps1` / `run_backend.bat` and
+  absolute cross-repository README links.
+- **Added** `.github/` issue/PR templates and CI skeleton
+  `.github/workflows/ci.yml` (JDK 21, `mvn -B test`) (P01-T13/T14).
+- **Removed** `LICENSE` — the single license of record lives in `TDOP-docs`.
 
-### Security
+### TDOP-frontend
 
-- `check_db.ps1` (developer helper) contained a plaintext database password; scrubbed
-  to an environment-variable prompt before inclusion in `TDOP-infra`.
+- **Changed** README repository links made absolute (relative sibling links break on
+  GitHub) and the Kanban board link added.
+- **Added** portable development helper `run_frontend.bat`.
+- **Added** `.github/` issue/PR templates and CI skeleton
+  `.github/workflows/ci.yml` (`npm ci`, lint, test) (P01-T13/T14).
+- **Removed** `LICENSE` — the single license of record lives in `TDOP-docs`.
+
+### TDOP-infra
+
+- **Added** README documenting the sibling-clone layout required by the Compose build
+  contexts, service/port tables, and environment setup.
+- **Added** smoke-check helpers `check_db.ps1` / `check_db.sql` / `check_servers.ps1`.
+- **Added** Cloudflare documented as part of the project: production edge for DNS,
+  TLS, CDN caching, and WAF/bot protection in front of the origin (DEC-009).
+- **Removed** `nginx/nginx.conf` — relocated to `TDOP-backend/nginx.conf` where the
+  API it protects lives (DEC-009); the frontend container keeps its own
+  `TDOP-frontend/nginx.conf`.
+- **Removed** `LICENSE` — the single license of record lives in `TDOP-docs`.
+- **Added** `.github/` issue/PR templates and CI skeleton
+  `.github/workflows/ci.yml` (`docker compose config` validation) (P01-T13/T14).
+- **Security:** `check_db.ps1` contained a plaintext database password; scrubbed to
+  an environment-variable prompt (`PGPASSWORD`).
+
+### TDOP-mobile
+
+- **Added** initial README, `.gitignore`, `.github/` issue/PR templates, and a CI
+  skeleton that starts Flutter analysis once `pubspec.yaml` exists (P01-T13/T14).
+- **Changed** README now records the decided mobile stack: **Flutter / Dart**,
+  one codebase for Android and iOS (DEC-010).
+- **Removed** `LICENSE` — the single license of record lives in `TDOP-docs`.
+
+### Tanzanian_Opportunities (umbrella index)
+
+- **Changed** README rewritten as the repository-map index: repository table with
+  technology stacks, project-wide technology stack section (including Cloudflare),
+  quick start with sibling clone instructions, and documentation pointers.
+- **Changed** all moved content removed (422 paths): governance set, `Docs/`, and
+  component directories now live in their component repositories (DEC-007).
+- **Removed** `LICENSE` — linked to `TDOP-docs` instead (DEC-011).
+- **Added** `.github/` issue/PR templates (P01-T13); no build workflow — the
+  umbrella index has nothing to compile.
+
+### Organization Kanban board
+
+- **Added** GitHub Projects board `TDOP Delivery`
+  (`https://github.com/orgs/Tanzanian-Opportunities/projects/1`, views
+  `Kanban Board` + `All Tasks`) with all 177 tasks as cards and the six official
+  states as columns; custom field `TDOP Status`. Card statuses verified equal to
+  `TASK_BREAKDOWN.md` (162 `BACKLOG`, 3 `TO DO`, 1 `IN PROGRESS`, 11 `DONE`).
+- **Changed** Phase 01 closure: the four remaining cards (P01-T12 – P01-T15) moved
+  to `DONE`; board now mirrors `TASK_BREAKDOWN.md` at 162 `BACKLOG` / 15 `DONE`.
+
+### Phase closure
+
+- **Phase 01 — Project Initiation: Completed (2026-09-30, Session 04)** —
+  consolidated final state of the phase per part:
+  - `TDOP-docs`: governance set complete (`LICENSE`, `CHANGELOG.md`,
+    `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, `DEVELOPMENT_GUIDE.md`,
+    `SECURITY.md`, `SECURITY_STANDARDS.md`, `PROJECT_MANAGEMENT.md`), plus
+    `TASK_BREAKDOWN.md`, `EXISTING_IMPLEMENTATION_AUDIT.md`,
+    `CODING_STANDARDS.md`, `MAINTAINERS.md`, `scripts/validate.ps1`, and
+    `Specs/` (incl. `SRS.md` and the completion roadmap); audit evidence
+    verified 27/27; DEC-001 – DEC-011 recorded; validation passed.
+  - `TDOP-backend` / `TDOP-frontend` / `TDOP-infra` / `TDOP-mobile` / umbrella:
+    per-repo READMEs with technology stacks, license consolidated into
+    `TDOP-docs` (DEC-011), `.github/` issue/PR templates, CI skeletons
+    (P01-T13/T14).
+  - Organization Kanban board: all 15 Phase 01 cards `DONE`, mirroring the
+    tracker.
+  - Phase status flipped `In progress` → `Completed` in
+    `Phase completion status`; next phase (02) stays `Planned` until its work
+    starts (DEC-008).
 
 ---
 
@@ -146,27 +299,18 @@ First governance baseline. This section will be dated when the first tag is cut.
 ```markdown
 ## [X.Y.Z] — YYYY-MM-DD
 
-### Added
-- ...
+### <Part / repository>
+- **Added** ...
+- **Changed** ...
+- **Fixed** ...
+- **Security:** ...
+- **Breaking** ...
+- **Infrastructure** ...
+- **Database** ...
+- **Documentation** ...
 
-### Changed
-- ...
-
-### Fixed
-- ...
-
-### Security
-- ...
-
-### Breaking
-- ...
-
-### Infrastructure
-- ...
-
-### Database
-- ...
-
-### Documentation
-- ...
+### Phase closure (only when a phase completes)
+- **Phase NN — <Name>: Completed** — consolidated final changes of the phase per
+  part; phase status flipped to Completed in `Phase completion status`; the next
+  phase stays `Planned` until its work starts (DEC-008).
 ```

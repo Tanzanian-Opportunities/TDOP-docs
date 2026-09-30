@@ -12,6 +12,70 @@
 
 ---
 
+# 0. COMPLETION ROADMAP — THE CLEAR PATH TO DONE
+
+This section is the single-glance path to completing TDOP. It mirrors the
+authoritative 33-phase sequence in `PROJECT_MANAGEMENT.md` §4/§5 (DEC-002) and the
+task boards in `TASK_BREAKDOWN.md` (177 tasks). Phase status uses the 3-step
+lifecycle **Planned → In progress → Completed** (DEC-008), which is independent of
+the six-state task Kanban. When a phase is fully done, `CHANGELOG.md` records its
+phase-closure summary and the phase is marked Completed before the next phase
+starts.
+
+**Current position: PHASE 01 — Project Initiation: Completed (15/15 tasks).
+Next phase: PHASE 02 — Requirements Engineering (Planned).**
+
+| # | Phase | Group | Tasks | Status |
+|---|---|---|---|---|
+| 01 | Project Initiation | FOUNDATION | 15 | **Completed** |
+| 02 | Requirements Engineering | FOUNDATION | 6 | Planned |
+| 03 | System Analysis | FOUNDATION | 5 | Planned |
+| 04 | System Architecture | FOUNDATION | 5 | Planned |
+| 05 | Database Design | FOUNDATION | 6 | Planned |
+| 06 | API & Contract Design | FOUNDATION | 5 | Planned |
+| 07 | Development Environment | FOUNDATION | 5 | Planned |
+| 08 | Backend Foundation | CORE PLATFORM | 5 | Planned |
+| 09 | Frontend Foundation | CORE PLATFORM | 5 | Planned |
+| 10 | Authentication & Authorization | CORE PLATFORM | 5 | Planned |
+| 11 | User & Profile Module | CORE PLATFORM | 5 | Planned |
+| 12 | Organization Module | CORE PLATFORM | 5 | Planned |
+| 13 | Opportunity Core | CORE PLATFORM | 5 | Planned |
+| 14 | Trust & Verification | CORE PLATFORM | 5 | Planned |
+| 15 | Discovery & Search | CORE PLATFORM | 5 | Planned |
+| 16 | Application Engine | CORE PLATFORM | 5 | Planned |
+| 17 | Notification System | CORE PLATFORM | 5 | Planned |
+| 18 | Deadline & Freshness | CORE PLATFORM | 5 | Planned |
+| 19 | Personalization & Matching | CORE PLATFORM | 5 | Planned |
+| 20 | Administration & Governance | CORE PLATFORM | 5 | Planned |
+| 21 | Analytics & Outcomes | INTELLIGENCE & ECOSYSTEM | 5 | Planned |
+| 22 | Advanced Data Quality & Source Management | INTELLIGENCE & ECOSYSTEM | 5 | Planned |
+| 23 | External Opportunity Ingestion | INTELLIGENCE & ECOSYSTEM | 5 | Planned |
+| 24 | Advanced Intelligence / AI | INTELLIGENCE & ECOSYSTEM | 5 | Planned |
+| 25 | Communication Expansion | INTELLIGENCE & ECOSYSTEM | 5 | Planned |
+| 26 | Subscription / Business Model | INTELLIGENCE & ECOSYSTEM | 5 | Planned |
+| 27 | Complete Security Hardening | PRODUCTION READINESS | 5 | Planned |
+| 28 | Complete Testing | PRODUCTION READINESS | 5 | Planned |
+| 29 | Performance & Reliability | PRODUCTION READINESS | 5 | Planned |
+| 30 | Deployment & CI/CD | PRODUCTION READINESS | 5 | Planned |
+| 31 | Beta Release | RELEASE | 5 | Planned |
+| 32 | Production Launch | RELEASE | 5 | Planned |
+| 33 | Continuous Improvement | CONTINUOUS | 5 | Planned |
+
+**Path rules**
+
+1. Phases run strictly in order; a phase starts only when the previous one is
+   `Completed` (never start future-phase work).
+2. Each phase exits only when its tasks are all DONE, its acceptance criteria are
+   met, validation passes, and the blocker log is clear (see `TASK_BREAKDOWN.md`
+   per-phase exit criteria).
+3. Completion writes a phase-closure summary into `CHANGELOG.md` and flips the
+   phase's status in this table, in `CHANGELOG.md`, and in
+   `PROJECT_MANAGEMENT.md` §5.
+4. The Cloudflare edge, Nginx origin proxy, and Flutter mobile app are in-scope
+   parts of the path (DEC-010, DEC-009).
+
+---
+
 # 1. EXECUTIVE OVERVIEW
 
 Tanzania Digital Opportunity Platform (TDOP) is a Tanzania-first digital ecosystem designed to help people discover, understand, evaluate, match with, apply for and track legitimate opportunities from different sectors in one trusted environment.

@@ -48,7 +48,8 @@ vulnerability exists:
 - Repository maintainer profile (request a private contact channel):
   https://github.com/felix202422
 - Dedicated security contact: **[TBD — security contact address to be provided by the
-  project owner. Do not invent or guess an address.]**
+  project owner. Do not invent or guess an address.]** Placeholder ownership and all
+  contact points are catalogued in [`MAINTAINERS.md`](MAINTAINERS.md) (P01-T15).
 
 ### 2.3 What to include
 
@@ -149,7 +150,9 @@ For an actively exploited or imminently exploitable vulnerability:
 ### In scope
 
 - Source code in this repository (backend, frontend, infrastructure).
-- The Docker/Nginx deployment configuration in `TDOP-infra/`.
+- The Docker Compose deployment configuration in `TDOP-infra/`.
+- The Nginx edge configuration in `TDOP-backend/nginx.conf`.
+- The Cloudflare edge configuration (dashboard/API) that fronts production.
 - Authentication, authorization, and session handling.
 - Data handling of seeker, organization, and application data.
 

@@ -14,12 +14,12 @@ https://github.com/orgs/Tanzanian-Opportunities/projects/1
 
 | Repository | Contents |
 |---|---|
-| [`Tanzanian_Opportunities`](https://github.com/Tanzanian-Opportunities/Tanzanian_Opportunities) | Umbrella index: overview, license, links |
-| [`TDOP-backend`](https://github.com/Tanzanian-Opportunities/TDOP-backend) | Java 21 / Spring Boot 3.3 REST API (PostgreSQL, Flyway) |
+| [`Tanzanian_Opportunities`](https://github.com/Tanzanian-Opportunities/Tanzanian_Opportunities) | Umbrella index: overview, technology stacks, links |
+| [`TDOP-backend`](https://github.com/Tanzanian-Opportunities/TDOP-backend) | Java 21 / Spring Boot 3.3 REST API (PostgreSQL, Flyway) + Nginx edge config |
 | [`TDOP-frontend`](https://github.com/Tanzanian-Opportunities/TDOP-frontend) | React 18 / TypeScript / Vite / Tailwind SPA |
-| [`TDOP-infra`](https://github.com/Tanzanian-Opportunities/TDOP-infra) | Docker Compose, Nginx, environment orchestration |
-| [`TDOP-docs`](https://github.com/Tanzanian-Opportunities/TDOP-docs) | This repository — governance, specs, project management |
-| [`TDOP-mobile`](https://github.com/Tanzanian-Opportunities/TDOP-mobile) | Planned mobile application (stack TBD) |
+| [`TDOP-infra`](https://github.com/Tanzanian-Opportunities/TDOP-infra) | Docker Compose orchestration, Cloudflare edge |
+| [`TDOP-docs`](https://github.com/Tanzanian-Opportunities/TDOP-docs) | This repository - governance, specs, project management |
+| [`TDOP-mobile`](https://github.com/Tanzanian-Opportunities/TDOP-mobile) | Planned mobile application (Flutter / Dart, DEC-010) |
 
 Clone the repositories side by side in one directory — the Docker build contexts
 (`../TDOP-backend`, `../TDOP-frontend`) depend on that layout.
@@ -35,11 +35,13 @@ Clone the repositories side by side in one directory — the Docker build contex
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Contribution workflow, branch naming, PRs, DoR/DoD |
 | [`SECURITY.md`](SECURITY.md) | Vulnerability reporting and disclosure |
 | [`SECURITY_STANDARDS.md`](SECURITY_STANDARDS.md) | Binding technical security standards |
+| [`CODING_STANDARDS.md`](CODING_STANDARDS.md) | Binding coding standards (Java/Spring, React/TS, SQL, i18n, Git) |
 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Contributor behavior and enforcement |
-| [`CHANGELOG.md`](CHANGELOG.md) | Change history — changes are never silently omitted |
+| [`CHANGELOG.md`](CHANGELOG.md) | Change history per project part + phase completion status |
+| [`MAINTAINERS.md`](MAINTAINERS.md) | Owners, roles, and contact placeholders |
 | [`README_PRD.md`](README_PRD.md) | Product requirements document |
-| [`LICENSE`](LICENSE) | MIT license text |
-| [`Specs/`](Specs/) | `TDOP_MASTER_SPEC.md`, `IMPLEMENTATION & FUTURE ROADMAP.md` (+ `.docx`), `DEPLOYMENT_CHECKLIST.md` |
+| [`LICENSE`](LICENSE) | MIT license text - the single license of record for all repositories |
+| [`Specs/`](Specs/) | `SRS.md`, `TDOP_MASTER_SPEC.md`, `IMPLEMENTATION & FUTURE ROADMAP.md` (+ `.docx`), `DEPLOYMENT_CHECKLIST.md` |
 
 ## How tracking works
 

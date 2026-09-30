@@ -45,7 +45,7 @@ Documentation       → README / spec / CHANGELOG updated in the same change set
    ↓
 Merge               → into `develop` when merge requirements are met
    ↓
-Deployment          → Docker Compose / Nginx per TDOP-infra
+Deployment          → Docker Compose per TDOP-infra, Nginx origin proxy, Cloudflare edge
 ```
 
 ## 2. Repository structure
@@ -57,7 +57,7 @@ Docker build contexts (`../TDOP-backend`, `../TDOP-frontend`) depend on this lay
 
 ```text
 github.com/Tanzanian-Opportunities/
-├── Tanzanian_Opportunities/    umbrella index: README (repository map), LICENSE, links
+├── Tanzanian_Opportunities/    umbrella index: README (repository map), links
 ├── TDOP-backend/               Java 21 / Spring Boot API
 │   ├── src/main/java/tdop/
 │   │   ├── controller/         REST controllers (admin/, organization/, trust/)
@@ -76,6 +76,7 @@ github.com/Tanzanian-Opportunities/
 │   │   ├── db/migration/       Flyway migrations (V1..Vn)
 │   │   └── logback-spring.xml  logging configuration
 │   ├── src/test/java/          unit & integration tests
+│   ├── nginx.conf              deployment Nginx edge proxy (moved from infra)
 │   ├── Dockerfile, .env.example, README.md
 │   └── pom.xml                 Maven build (Java 21, Spring Boot 3.3)
 ├── TDOP-frontend/              React 18 + TypeScript SPA
@@ -89,20 +90,20 @@ github.com/Tanzanian-Opportunities/
 │   ├── src/tests/              Vitest tests (setup, services, hooks, pages)
 │   ├── Dockerfile, nginx.conf, .env.example, README.md
 │   └── package.json            scripts: dev, build, test, lint, format
-├── TDOP-infra/                 Docker Compose, Nginx, env examples
+├── TDOP-infra/                 Docker Compose, env examples, Cloudflare edge
 │   ├── docker-compose.yml      build contexts ../TDOP-backend, ../TDOP-frontend
 │   ├── docker-compose.dev.yml
-│   ├── nginx/nginx.conf
 │   └── .env.example
 ├── TDOP-docs/                  governance, specs, project management (this guide)
 │   ├── PROJECT_MANAGEMENT.md   live source of truth (sessions, phases, logs)
 │   ├── TASK_BREAKDOWN.md       master Kanban + 33 phase boards (177 tasks)
 │   ├── EXISTING_IMPLEMENTATION_AUDIT.md
 │   ├── CHANGELOG.md · CONTRIBUTING.md · CODE_OF_CONDUCT.md
-│   ├── SECURITY.md · SECURITY_STANDARDS.md · DEVELOPMENT_GUIDE.md · LICENSE
+│   ├── SECURITY.md · SECURITY_STANDARDS.md · DEVELOPMENT_GUIDE.md
+│   ├── CODING_STANDARDS.md · LICENSE
 │   ├── README_PRD.md
 │   └── Specs/                  TDOP_MASTER_SPEC, roadmap, DEPLOYMENT_CHECKLIST
-└── TDOP-mobile/                planned mobile application (stack TBD)
+└── TDOP-mobile/                planned mobile application (Flutter/Dart, DEC-010)
 
 Branches (every repository): `develop` (default, integration) + `main` (releases).
 ```
@@ -121,8 +122,9 @@ Issue/PR templates and each repository's CI workflows belong in that repository'
 | Frontend | React 18, TypeScript 5, Vite 5, React Router 6, Tailwind CSS 3 |
 | Data/state | TanStack Query, Zustand, react-hook-form, axios |
 | i18n | i18next (English / Swahili) |
+| Mobile | Flutter, Dart (`TDOP-mobile`, DEC-010) |
 | Tests | JUnit 5, Mockito, H2 (backend); Vitest + Testing Library (frontend) |
-| Build/infra | Maven, npm, Docker Compose, Nginx |
+| Build/infra | Maven, npm, Docker Compose, Nginx (origin proxy), Cloudflare edge |
 | Logging | SLF4J + Logback (console + rolling file) |
 
 Versions are declared in `TDOP-backend/pom.xml` and `TDOP-frontend/package.json`.

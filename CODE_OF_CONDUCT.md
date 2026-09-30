@@ -71,7 +71,7 @@ If you experience or witness a violation of this Code of Conduct:
 2. Report it privately to the project maintainer:
    - Repository maintainer profile: https://github.com/felix202422
    - Private contact: **[TBD — dedicated conduct contact address to be added by the
-     project owner]**
+     project owner]** (tracked in [`MAINTAINERS.md`](MAINTAINERS.md), P01-T15)
 3. Include, if possible:
    - what happened, with dates/times and links (issue/PR/commit URLs);
    - any supporting evidence (screenshots, messages);
@@ -107,7 +107,8 @@ The maintainer will:
 - inform the reporter of the outcome (subject to privacy constraints).
 
 If the maintainer is the subject of a report, the report should be escalated to
-**[TBD — alternate/owner-of-record contact]**, and the maintainer must recuse
+**[TBD — alternate/owner-of-record contact]** (tracked in
+[`MAINTAINERS.md`](MAINTAINERS.md)), and the maintainer must recuse
 themselves from the matter.
 
 ## 7. Attribution

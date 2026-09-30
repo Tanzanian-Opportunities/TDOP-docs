@@ -28,7 +28,7 @@ official phase status** (DEC-004). "Actual State" values follow `README_PRD.md` 
 | Recommendations and similar opportunities | 19 | Partial | `RecommendationService.java`, `RecommendationController.java`; `README_PRD.md` §6.1 "basic rule-based" | Baseline for Phase 19 personalization |
 | Admin dashboard, user management, audit log, analytics | 20, 21 | Partial | `controller/admin`; `audit/` package; `README_PRD.md` §6.1 Observability "Partial" | Coverage verification in Phase 20/21 |
 | Flyway migrations V1–V14 | 5 | Implemented | `TDOP-backend/src/main/resources/db/migration/` (13 files) | Schema review task (P05-T02) |
-| Docker/Nginx deployment (`TDOP-infra`) | 30 | Partial | `docker-compose.yml`, `nginx/nginx.conf`; Adminer present in compose | CI absent (P01-T14, P30-T01); remove Adminer from production |
+| Docker/Nginx deployment | 30 | Partial | `TDOP-infra/docker-compose.yml`, `TDOP-backend/nginx.conf` (moved from `TDOP-infra/nginx/`); Adminer present in compose | CI absent (P01-T14, P30-T01); remove Adminer from production |
 | Tests: backend JUnit/Mockito/H2, frontend Vitest | 28 | Partial | `TDOP-backend/src/test/java/tdop/**`, `TDOP-frontend/src/tests/**` | Coverage assessment (P28-T04) |
 | English/Swahili localization | 9 | Partial | `src/i18n/`; `README.md` "partial localization" | Complete key coverage (P09-T05) |
 | Seeded demo accounts with known passwords | 32 | Implemented (production risk) | `V2__seed_data.sql`, `V8__sample_organizations.sql`, `README.md` | Environment guard before launch (P32-T01) |

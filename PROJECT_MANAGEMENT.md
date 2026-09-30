@@ -1,4 +1,4 @@
-﻿# TDOP Project Management
+# TDOP Project Management
 
 **Project:** Tanzania Digital Opportunity Platform (TDOP)
 **Repository:** https://github.com/Tanzanian-Opportunities/TDOP-docs (governance and project management)
@@ -21,7 +21,8 @@ Related documents: [`TASK_BREAKDOWN.md`](TASK_BREAKDOWN.md) (177 tasks, 33 phase
 boards) · [`EXISTING_IMPLEMENTATION_AUDIT.md`](EXISTING_IMPLEMENTATION_AUDIT.md) ·
 [`DEVELOPMENT_GUIDE.md`](DEVELOPMENT_GUIDE.md) ·
 [`CONTRIBUTING.md`](CONTRIBUTING.md) · [`SECURITY.md`](SECURITY.md) ·
-[`SECURITY_STANDARDS.md`](SECURITY_STANDARDS.md) · [`CHANGELOG.md`](CHANGELOG.md)
+[`SECURITY_STANDARDS.md`](SECURITY_STANDARDS.md) · [`CHANGELOG.md`](CHANGELOG.md) ·
+[`CODING_STANDARDS.md`](CODING_STANDARDS.md) · [`Specs/SRS.md`](Specs/SRS.md)
 
 ---
 
@@ -29,14 +30,14 @@ boards) · [`EXISTING_IMPLEMENTATION_AUDIT.md`](EXISTING_IMPLEMENTATION_AUDIT.md
 
 | Field | Value |
 |---|---|
-| Current Phase | PHASE 01 — Project Initiation |
-| Overall Status | IN PROGRESS |
-| Overall Progress | 6% |
-| Current Session | Session 03 |
-| Last Updated | 2026-09-30 13:45 |
-| Current Objective | Establish the project governance and documentation foundation |
+| Current Phase | PHASE 01 — Project Initiation (Completed) |
+| Overall Status | PHASE 01 COMPLETED → PHASE 02 READY |
+| Overall Progress | 8% |
+| Current Session | Session 04 |
+| Last Updated | 2026-09-30 (Session 04) |
+| Current Objective | Phase 01 closed; next objective: requirements baseline (PHASE 02, not yet started) |
 | Current Blocker | None |
-| Next Action | Verify audit evidence (P01-T12), then add issue/PR templates, CI skeleton, and owner/contact definitions (P01-T13 – P01-T15) |
+| Next Action | Begin PHASE 02 — Requirements Engineering (P02-T01) when its work cycle starts |
 
 ---
 
@@ -50,7 +51,7 @@ boards) · [`EXISTING_IMPLEMENTATION_AUDIT.md`](EXISTING_IMPLEMENTATION_AUDIT.md
 | Short name | TDOP |
 | Purpose | Connect opportunity seekers with trusted opportunities and organizations through discovery, verification, moderation, application tracking, notifications, personalization, governance, analytics, and (later) intelligent and externally sourced opportunity services |
 | Priorities | Trust · Opportunity discovery · Verification · Transparency · Security · Accessibility · Reliability · Maintainability · Explainability · User privacy · Responsible technology |
-| Repository layout | Multi-repository organization [`Tanzanian-Opportunities`](https://github.com/Tanzanian-Opportunities): `TDOP-backend` (Java 21, Spring Boot 3.3, PostgreSQL, Flyway) · `TDOP-frontend` (React 18, TypeScript, Vite, Tailwind) · `TDOP-infra` (Docker Compose, Nginx) · `TDOP-docs` (governance, specs, this file) · `TDOP-mobile` (planned) · `Tanzanian_Opportunities` (umbrella index) |
+| Repository layout | Multi-repository organization [`Tanzanian-Opportunities`](https://github.com/Tanzanian-Opportunities): `TDOP-backend` (Java 21, Spring Boot 3.3, PostgreSQL, Flyway, Nginx edge proxy) · `TDOP-frontend` (React 18, TypeScript, Vite, Tailwind) · `TDOP-infra` (Docker Compose, Cloudflare edge) · `TDOP-docs` (governance, specs, this file) · `TDOP-mobile` (Flutter/Dart, planned) · `Tanzanian_Opportunities` (umbrella index) |
 | License | MIT (`LICENSE`, declared in `README.md`) — see Decision DEC-001 |
 
 ### 1.2 Governance document set
@@ -64,9 +65,12 @@ boards) · [`EXISTING_IMPLEMENTATION_AUDIT.md`](EXISTING_IMPLEMENTATION_AUDIT.md
 | `SECURITY_STANDARDS.md` | Binding technical security standards |
 | `CODE_OF_CONDUCT.md` | Contributor behavior and enforcement |
 | `CHANGELOG.md` | Change history; changes must never be silently omitted |
-| `LICENSE` | MIT license text |
 | `TASK_BREAKDOWN.md` | Master Kanban (177 tasks) and all 33 phase boards (extracted from this file, §6/§7) |
 | `EXISTING_IMPLEMENTATION_AUDIT.md` | Inventory of pre-existing code (extracted from this file, §16) |
+| `CODING_STANDARDS.md` | Binding coding standards for all component repositories |
+| `MAINTAINERS.md` | Maintainer roles, ownership, and contact points (P01-T15) |
+| `LICENSE` | MIT license text — the single license of record; component repositories link here (DEC-011) |
+| `Specs/SRS.md` | Software Requirements Specification draft (Phase 02 baseline input) |
 
 ### 1.3 Official Kanban states
 
@@ -78,8 +82,10 @@ BACKLOG → TO DO → IN PROGRESS → CODE REVIEW → TESTING → DONE
 
 - If work is blocked, the task keeps its current state and a blocker is recorded in
   §12 (Blocker Log).
-- Phase-level status uses `BACKLOG`, `TO DO`, `IN PROGRESS`, or `DONE`.
-- Custom statuses ("Started", "Almost Done", "Waiting", …) are forbidden.
+- Phase-level status uses a separate three-step lifecycle — `Planned`,
+  `In progress`, `Completed` (DEC-008) — independent of the six task states.
+- Custom statuses ("Started", "Almost Done", "Waiting", …) are forbidden for tasks;
+  invented phase statuses are forbidden for phases.
 
 ### 1.4 Progress calculation method (documented)
 
@@ -92,8 +98,8 @@ Overall Progress = total DONE tasks ÷ total tasks in all phases × 100,
 ```
 
 Progress is computed from completed tasks only — never estimated. Example (current):
-Phase 01 has 15 tasks, 11 DONE → 73.3% → **75%**. Project total: 177 tasks, 11 DONE →
-6.2% → **6%**.
+Phase 01 has 15 tasks, 15 DONE → **100%** (Completed). Project total: 177 tasks, 15
+DONE → 8.5% → **8%**.
 
 ---
 
@@ -102,15 +108,16 @@ Phase 01 has 15 tasks, 11 DONE → 73.3% → **75%**. Project total: 177 tasks, 
 ```text
 Current Phase:
 PHASE 01 — Project Initiation
+Status: Completed (2026-09-30, Session 04)
 
 Phase Progress:
-75%   (11 of 15 tasks DONE)
+100%   (15 of 15 tasks DONE)
 
 Current Kanban Column:
-IN PROGRESS
+DONE (all Phase 01 tasks)
 
 Current Task:
-P01-T12 — Verify audit evidence against source files
+(none — Phase 01 is complete)
 
 Completed:
 P01-T01 Formalize MIT license
@@ -124,24 +131,26 @@ P01-T08 Initialize PROJECT_MANAGEMENT.md
 P01-T09 Documentation consistency validation
 P01-T10 Draft existing-implementation audit
 P01-T11 Initialize decision, risk, and blocker logs
+P01-T12 Verify audit evidence against source files
+P01-T13 Add issue and PR templates
+P01-T14 Add CI skeleton
+P01-T15 Define owners and contacts
 
 Remaining:
-P01-T12 Verify audit evidence          (IN PROGRESS)
-P01-T13 Add issue and PR templates     (TO DO)
-P01-T14 Add CI skeleton                (TO DO)
-P01-T15 Define owners and contacts     (TO DO)
+(none — all 15 Phase 01 tasks are DONE)
 
 Blocker:
 None
 
 Next:
-Finish P01-T12, then P01-T13 – P01-T15; PHASE 01 exits when its exit criteria are met
+Begin PHASE 02 — Requirements Engineering (P02-T01) when its work cycle starts;
+Phase 02 status stays Planned until that work actually begins (DEC-008).
 
 Last Completed Phase:
-(none — PHASE 01 is the first phase)
+PHASE 01 — Project Initiation (Completed, 15/15, Session 04)
 
 Next Phase:
-PHASE 02 — Requirements Engineering
+PHASE 02 — Requirements Engineering (Planned)
 ```
 
 ---
@@ -352,6 +361,114 @@ Maintainer (repository owner) with AI coding-assist session.
 
 ---
 
+### Session 04
+
+Date: 2026-09-30
+
+Phase:
+PHASE 01 - Project Initiation
+
+Objective:
+Execute the owner's follow-up directives - single license of record, per-project
+CHANGELOG with the phase-status lifecycle, technology-stack tables in every README,
+Nginx origin proxy moved out of `TDOP-infra` with Cloudflare as the production edge,
+a clear completion roadmap, `CODING_STANDARDS.md`, `Specs/SRS.md`, and the
+Flutter/Dart mobile stack - then complete the remaining Phase 01 tasks
+P01-T12 - P01-T15 and close the phase.
+
+Tasks Started:
+- P01-T12 - Verify audit evidence (moved IN PROGRESS -> DONE in this session).
+- P01-T13, P01-T14, P01-T15 - moved TO DO -> DONE in this session.
+
+Tasks Completed:
+- P01-T12 - audit evidence verification: all 27 file-path references extracted from
+  `EXISTING_IMPLEMENTATION_AUDIT.md` were resolved against the component-repository
+  clones; 27 found, 0 missing.
+- P01-T13 - issue templates (`bug_report`, `feature_request`) and
+  `pull_request_template.md` created under `.github/` in every component repository
+  (backend, frontend, infra, docs, mobile, umbrella index).
+- P01-T14 - CI skeleton `.github/workflows/ci.yml` created per buildable repository:
+  backend (JDK 21, `mvn test`), frontend (`npm ci`, lint, test), infra
+  (`docker compose config`), docs (`scripts/validate.ps1`), mobile (Flutter analyze
+  once `pubspec.yaml` exists). The umbrella index has no build and therefore no
+  workflow.
+- P01-T15 - `MAINTAINERS.md` created (ownership: org `Tanzanian-Opportunities`,
+  maintainer of record `felix202422`, contact channels; unverifiable details kept
+  `[TBD]` per the entry rules); governance-set table and README link it.
+- Phase 01 exit criteria met: 15/15 tasks DONE, validation passed (below), no open
+  blockers. Phase 01 status -> `Completed`, 100%.
+
+Files Changed:
+- `TDOP-docs`: `CHANGELOG.md` rewritten (per-project-part `[Unreleased]` groups,
+  phase completion status table, three-state phase lifecycle rules - DEC-008);
+  new `CODING_STANDARDS.md`; new `Specs/SRS.md`; new `MAINTAINERS.md`; new
+  `scripts/validate.ps1`; completion-roadmap section `0` in
+  `Specs/IMPLEMENTATION & FUTURE ROADMAP.md`; this file (dashboard, lifecycle
+  vocabulary, Phase Tracker, sessions, DEC-008 - DEC-011, Change History, sections
+  16-18); `TASK_BREAKDOWN.md` (P01-T12 - P01-T15 -> DONE, Phase 01 board moved,
+  all 33 phase record statuses converted to `Planned` / `In progress` /
+  `Completed`).
+- `TDOP-backend`: `LICENSE` removed (DEC-011); `nginx.conf` added (origin proxy
+  moved from `TDOP-infra`, DEC-009); README stack/license/edge sections updated;
+  `.github/` issue+PR templates and CI skeleton added.
+- `TDOP-frontend`: `LICENSE` removed; README stack/license/edge sections fixed
+  (absolute links, em dashes); `.github/` templates and CI skeleton added.
+- `TDOP-infra`: `LICENSE` and `nginx/` removed; README rewritten (stack table,
+  Cloudflare edge section, no nginx - pointer to `TDOP-backend/nginx.conf`);
+  `.github/` templates and CI skeleton added.
+- `TDOP-mobile`: `LICENSE` removed; README records the Flutter/Dart stack
+  (DEC-010); `.github/` templates and CI skeleton added.
+- Umbrella `Tanzanian_Opportunities`: `LICENSE` removed; README map rows and a
+  project-wide `## Technology Stack` table added; `.github/` templates added.
+
+Tests Run:
+- Audit evidence verification script: 27/27 path references found, 0 missing
+  (P01-T12).
+- `TDOP-docs` documentation consistency validator (`scripts/validate.ps1`) executed
+  after these changes: **OVERALL PASS - 33 of 33 checks** (governance files, MIT
+  license, completion roadmap, 33 phases in order, 66 board headings, 6 state
+  tables per phase, 177 unique task IDs, 15 DONE / 162 BACKLOG / 0 TO DO /
+  0 IN PROGRESS, lifecycle vocabulary in `TASK_BREAKDOWN.md` and
+  `PROJECT_MANAGEMENT.md` §5, cross-references, Session 04 recorded).
+- Kanban board mirrored via the GitHub API: P01-T12 - P01-T15 moved to `DONE`;
+  verified totals = 177 cards, 162 `BACKLOG` / 15 `DONE`, 0 in every other
+  column - equal to `TASK_BREAKDOWN.md`.
+
+Issues Found:
+- Exact-match file edits on documentation repeatedly failed on em dash (U+2014)
+  characters that render as a plain dash in the console; fixes were applied with
+  codepoint-aware replacements. No content was lost.
+- The umbrella repository's untracked `modernize/java-upgrade` tooling from the
+  pre-split era stays untracked and is not part of any phase task set.
+
+Blockers:
+- None.
+
+Decisions Made:
+- DEC-008 - phase lifecycle `Planned` / `In progress` / `Completed`, independent
+  of the six-state task Kanban.
+- DEC-009 - Cloudflare is the production edge; Nginx origin proxy lives in
+  `TDOP-backend/nginx.conf`, removed from `TDOP-infra` (amends DEC-005).
+- DEC-010 - mobile stack is Flutter/Dart, one codebase for Android and iOS.
+- DEC-011 - single MIT `LICENSE` of record in `TDOP-docs`; all other repositories
+  link to it (amends DEC-001).
+
+Definition of Done justification (documentation-only tasks, §10):
+- P01-T12 - tests written/passed: N/A (verification script output recorded above);
+  code review: documentation consistency review via `scripts/validate.ps1`.
+- P01-T13/T15 - tests N/A; review = validation pass.
+- P01-T14 - CI skeletons are declarative YAML validated by `docker compose config`
+  (infra) and by the workflows themselves once pushed; no runtime tests applicable.
+
+Next Action:
+PHASE 02 - Requirements Engineering (P02-T01) when its work cycle starts; open
+Cycle 02 in §8 at that time. Phase 02 stays `Planned` until then (DEC-008).
+
+Developer / Agent:
+Maintainer (repository owner) with AI coding-assist session.
+
+---
+
 ## 4. Master Roadmap
 
 Official phase sequence — do **not** rename, reorder, remove, merge, or skip phases:
@@ -433,43 +550,46 @@ Progress = DONE tasks ÷ total tasks, rounded to the nearest 25% step (§1.4).
 
 | Phase | Name | Status | Progress | Dependencies | Blockers |
 | --- | --- | --- | ---: | --- | --- |
-| 01 | Project Initiation | IN PROGRESS | 75% | — | None |
-| 02 | Requirements Engineering | BACKLOG | 0% | 01 | None |
-| 03 | System Analysis | BACKLOG | 0% | 02 | None |
-| 04 | System Architecture | BACKLOG | 0% | 03 | None |
-| 05 | Database Design | BACKLOG | 0% | 04 | None |
-| 06 | API & Contract Design | BACKLOG | 0% | 05 | None |
-| 07 | Development Environment | BACKLOG | 0% | 06 | None |
-| 08 | Backend Foundation | BACKLOG | 0% | 07 | None |
-| 09 | Frontend Foundation | BACKLOG | 0% | 07 | None |
-| 10 | Authentication & Authorization | BACKLOG | 0% | 08, 09 | None |
-| 11 | User & Profile Module | BACKLOG | 0% | 10 | None |
-| 12 | Organization Module | BACKLOG | 0% | 11 | None |
-| 13 | Opportunity Core | BACKLOG | 0% | 12 | None |
-| 14 | Trust & Verification | BACKLOG | 0% | 13 | None |
-| 15 | Discovery & Search | BACKLOG | 0% | 13 | None |
-| 16 | Application Engine | BACKLOG | 0% | 13 | None |
-| 17 | Notification System | BACKLOG | 0% | 16 | None |
-| 18 | Deadline & Freshness | BACKLOG | 0% | 13 | None |
-| 19 | Personalization & Matching | BACKLOG | 0% | 15 | None |
-| 20 | Administration & Governance | BACKLOG | 0% | 14 | None |
-| 21 | Analytics & Outcomes | BACKLOG | 0% | 20 | None |
-| 22 | Advanced Data Quality & Source Management | BACKLOG | 0% | 21 | None |
-| 23 | External Opportunity Ingestion | BACKLOG | 0% | 22 | None |
-| 24 | Advanced Intelligence / AI | BACKLOG | 0% | 19, 23 | None |
-| 25 | Communication Expansion | BACKLOG | 0% | 17 | None |
-| 26 | Subscription / Business Model | BACKLOG | 0% | 20 | None |
-| 27 | Complete Security Hardening | BACKLOG | 0% | 26 | None |
-| 28 | Complete Testing | BACKLOG | 0% | 27 | None |
-| 29 | Performance & Reliability | BACKLOG | 0% | 28 | None |
-| 30 | Deployment & CI/CD | BACKLOG | 0% | 29 | None |
-| 31 | Beta Release | BACKLOG | 0% | 30 | None |
-| 32 | Production Launch | BACKLOG | 0% | 31 | None |
-| 33 | Continuous Improvement | BACKLOG | 0% | 32 | None |
+| 01 | Project Initiation | Completed | 100% | — | None |
+| 02 | Requirements Engineering | Planned | 0% | 01 | None |
+| 03 | System Analysis | Planned | 0% | 02 | None |
+| 04 | System Architecture | Planned | 0% | 03 | None |
+| 05 | Database Design | Planned | 0% | 04 | None |
+| 06 | API & Contract Design | Planned | 0% | 05 | None |
+| 07 | Development Environment | Planned | 0% | 06 | None |
+| 08 | Backend Foundation | Planned | 0% | 07 | None |
+| 09 | Frontend Foundation | Planned | 0% | 07 | None |
+| 10 | Authentication & Authorization | Planned | 0% | 08, 09 | None |
+| 11 | User & Profile Module | Planned | 0% | 10 | None |
+| 12 | Organization Module | Planned | 0% | 11 | None |
+| 13 | Opportunity Core | Planned | 0% | 12 | None |
+| 14 | Trust & Verification | Planned | 0% | 13 | None |
+| 15 | Discovery & Search | Planned | 0% | 13 | None |
+| 16 | Application Engine | Planned | 0% | 13 | None |
+| 17 | Notification System | Planned | 0% | 16 | None |
+| 18 | Deadline & Freshness | Planned | 0% | 13 | None |
+| 19 | Personalization & Matching | Planned | 0% | 15 | None |
+| 20 | Administration & Governance | Planned | 0% | 14 | None |
+| 21 | Analytics & Outcomes | Planned | 0% | 20 | None |
+| 22 | Advanced Data Quality & Source Management | Planned | 0% | 21 | None |
+| 23 | External Opportunity Ingestion | Planned | 0% | 22 | None |
+| 24 | Advanced Intelligence / AI | Planned | 0% | 19, 23 | None |
+| 25 | Communication Expansion | Planned | 0% | 17 | None |
+| 26 | Subscription / Business Model | Planned | 0% | 20 | None |
+| 27 | Complete Security Hardening | Planned | 0% | 26 | None |
+| 28 | Complete Testing | Planned | 0% | 27 | None |
+| 29 | Performance & Reliability | Planned | 0% | 28 | None |
+| 30 | Deployment & CI/CD | Planned | 0% | 29 | None |
+| 31 | Beta Release | Planned | 0% | 30 | None |
+| 32 | Production Launch | Planned | 0% | 31 | None |
+| 33 | Continuous Improvement | Planned | 0% | 32 | None |
 
-**Phase transition rule:** a phase becomes `DONE` only when its exit criteria (§7) are
-satisfied. Then `Previous Phase → DONE`, `Next Phase → TO DO`, and §2 (Current Project
-Position) is updated in the same change set.
+**Phase transition rule (DEC-008):** a phase becomes `Completed` only when its exit
+criteria (§7) are satisfied. Then its status flips to `Completed` (100%), §2
+(Current Project Position) and the `Phase completion status` table in `CHANGELOG.md`
+are updated in the same change set, and a phase-closure summary is appended to
+`CHANGELOG.md`. The next phase stays `Planned` until its work actually starts, then
+moves to `In progress`.
 
 ---
 
@@ -496,7 +616,7 @@ The 33 phase specification records and their Kanban boards moved to [TASK_BREAKD
 | Tasks in scope | P01-T01 – P01-T15 |
 | Definition of Ready applied | Requirement (master governance brief) understood; acceptance criteria = the eight files + validation; no external dependencies; owner assigned |
 | Exit criteria | All 15 tasks DONE; consistency validation passed; no open blockers |
-| Status | IN PROGRESS (11/15 DONE, 1 IN PROGRESS, 3 TO DO) |
+| Status | COMPLETED (15/15 DONE; Phase 01 exit criteria met, Cycle 01 closed in Session 04) |
 
 Future cycles are appended here (Cycle 02, Cycle 03, …) — never delete a cycle record.
 
@@ -616,6 +736,10 @@ Status values: `Accepted` · `Proposed` · `Superseded` · `Rejected`.
 | DEC-005 | 2026-09-30 | **Technology stack of record**: Java 21 / Spring Boot 3.3 / PostgreSQL / Flyway (backend), React 18 / TypeScript / Vite / Tailwind (frontend), Docker Compose / Nginx (infra) | These are the stacks actually present and declared in `README.md`, `pom.xml`, and `package.json` | Re-platforming now; treating the stack as undecided | Development standards, environment setup, and hiring/training expectations are defined for this stack | 01 | Accepted |
 | DEC-006 | 2026-09-30 | Repository ownership transferred to the GitHub organization **`Tanzanian-Opportunities`** (repo name unchanged: `Tanzanian_Opportunities`) | Project owner created the organization and requested the move so the project is owned by the organization rather than a personal account | Keep the repository under the personal account; rename the repository during transfer | Clone, advisory, and documentation URLs change; GitHub redirects the old URLs; local `origin` remote updated | 01 | Accepted |
 | DEC-007 | 2026-09-30 | Split the monorepo into **component repositories** (`TDOP-backend`, `TDOP-frontend`, `TDOP-infra`, `TDOP-docs`, `TDOP-mobile`) with `main` + `develop` branches each, keep `Tanzanian_Opportunities` as an **umbrella index**, and mirror all 177 tasks as cards on an **organization GitHub Projects Kanban board** (six official states as columns) | Owner decision: clearer ownership per component, history preserved via `git subtree split`, and a live board alongside the Git-based tracker | Keep the monorepo untouched; manually recreate tasks on the board | Clone instructions and paths change (sibling-cloned component repos); this file + `TASK_BREAKDOWN.md` remain the source of truth and the board mirrors them | 01 | Accepted |
+| DEC-008 | 2026-09-30 | Phase statuses use a **three-step lifecycle** `Planned — In progress — Completed` that is independent of the six-state task Kanban | Task states describe work items; phase states describe whole-phase position and need a vocabulary that cannot be confused with task columns | Reusing `BACKLOG / TO DO / IN PROGRESS / DONE` for phases; inventing per-phase custom states | All phase tables (this file §5, `TASK_BREAKDOWN.md` records, `CHANGELOG.md` phase table, completion roadmap) use exactly `Planned / In progress / Completed`; a completed phase gets a CHANGELOG phase-closure summary | 01 | Accepted |
+| DEC-009 | 2026-09-30 | Production edge topology: **Cloudflare** fronts production (DNS, TLS, CDN, WAF); the Nginx origin proxy lives in `TDOP-backend/nginx.conf`, moved out of `TDOP-infra` | Owner directive: `TDOP-infra` = Compose/environment orchestration plus the Cloudflare edge; the reverse proxy that terminates origin traffic belongs to the backend service | Keep Nginx in `TDOP-infra`; run Cloudflare from `TDOP-infra`; no reverse proxy at all | Amends the infra line of DEC-005; `TDOP-infra/nginx/` removed; `TDOP-backend/nginx.conf` added; README, `DEVELOPMENT_GUIDE.md`, and `SECURITY.md` references updated | 01 | Accepted |
+| DEC-010 | 2026-09-30 | Mobile application stack: **Flutter / Dart** targeting Android and iOS from one codebase | Owner directive after stack review; cross-device coverage without maintaining two native codebases | React Native; separate Kotlin and Swift apps; leaving the stack undecided | `TDOP-mobile` README, the umbrella stack table, and `DEVELOPMENT_GUIDE.md` record Flutter/Dart; the mobile CI skeleton runs only after `pubspec.yaml` exists | 01 | Accepted |
+| DEC-011 | 2026-09-30 | **Single license of record**: the MIT `LICENSE` file lives only in `TDOP-docs`; every component repository links to it instead of carrying a copy | Owner directive: one canonical license file that cannot drift across five copies; each repository README still declares the license | Keep a `LICENSE` copy in every repository; no license file at all | Amends DEC-001; `LICENSE` removed from `TDOP-backend`, `TDOP-frontend`, `TDOP-infra`, `TDOP-mobile`, and the umbrella index; their READMEs and the governance tables link to `TDOP-docs/LICENSE` | 01 | Accepted |
 
 ---
 
@@ -631,6 +755,8 @@ Changes to `PROJECT_MANAGEMENT.md` itself (append-only).
 | 2026-09-30 | Session 01 | Repository transferred to the `Tanzanian-Opportunities` GitHub organization (DEC-006); repository URLs updated in `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, `SECURITY.md`, this file, and `Docs/DEPLOYMENT_CHECKLIST.md`; local `origin` remote repointed | Maintainer with AI coding-assist |
 | 2026-09-30 | Session 02 | Multi-repository split executed with history (DEC-007); this file slimmed — §6/§7 extracted to `TASK_BREAKDOWN.md`, §16 extracted to `EXISTING_IMPLEMENTATION_AUDIT.md`; governance set relocated to `TDOP-docs` with specs under `Specs/` | Maintainer with AI coding-assist |
 | 2026-09-30 | Session 02 | Organization Kanban board created (`Tanzanian-Opportunities/projects/1`) with 177 task cards and the six official states as columns; card statuses verified equal to this tracker | Maintainer with AI coding-assist |
+| 2026-09-30 | Session 04 | Owner follow-up directives applied across all repositories: single MIT `LICENSE` of record in `TDOP-docs` (DEC-011); `CHANGELOG.md` rewritten per project part with the three-state phase lifecycle (DEC-008); technology-stack tables added to all READMEs; Nginx origin proxy moved `TDOP-infra/nginx/` → `TDOP-backend/nginx.conf` with Cloudflare as production edge (DEC-009); `CODING_STANDARDS.md` and `Specs/SRS.md` added; completion-roadmap section added to `Specs/IMPLEMENTATION & FUTURE ROADMAP.md`; mobile stack fixed as Flutter/Dart (DEC-010) | Maintainer with AI coding-assist |
+| 2026-09-30 | Session 04 | Phase 01 completed: P01-T12 – P01-T15 moved to `DONE` (audit evidence verified 27/27 file references; issue/PR templates and CI skeletons added under `.github/` in every component repository; `MAINTAINERS.md` created); Phase Tracker §5 and the phase records in `TASK_BREAKDOWN.md` converted to the `Planned` / `In progress` / `Completed` lifecycle; dashboard, §2, §8, §16, §17, §18 updated | Maintainer with AI coding-assist |
 
 Validation checklist performed for P01-T09:
 
@@ -650,7 +776,7 @@ Validation checklist performed for P01-T09:
 
 ## 16. EXISTING IMPLEMENTATION AUDIT - moved to EXISTING_IMPLEMENTATION_AUDIT.md
 
-The full inventory of pre-existing code, its actual state, and evidence paths moved to [EXISTING_IMPLEMENTATION_AUDIT.md](EXISTING_IMPLEMENTATION_AUDIT.md) (original section 16 numbering noted in that file). Task **P01-T12** (verify every row against actual source files) remains IN PROGRESS.
+The full inventory of pre-existing code, its actual state, and evidence paths moved to [EXISTING_IMPLEMENTATION_AUDIT.md](EXISTING_IMPLEMENTATION_AUDIT.md) (original section 16 numbering noted in that file). Task **P01-T12** (verify every row against actual source files) is **DONE** — all 27 file-path evidence references were verified against the component-repository clones in Session 04 (0 missing).
 
 ---
 
@@ -669,9 +795,10 @@ Binding rules for every developer and AI agent working on TDOP:
 8. Never mark unfinished work `DONE`.
 9. Never silently skip a phase or reorder the phase sequence.
 10. Never delete historical session information — append `Session 02`, `Session 03`, …
-11. Never invent statuses outside the six official states.
+11. Never invent statuses outside the six official task states, or outside the
+    three phase-lifecycle states `Planned` / `In progress` / `Completed` (DEC-008).
 12. Never invent contact details, team members, dates, or technologies.
-13. A phase becomes `DONE` only when its exit criteria (§7) are satisfied.
+13. A phase becomes `Completed` only when its exit criteria (§7) are satisfied.
 14. If blocked, keep the Kanban state and log the blocker (§12).
 15. Record significant architectural/project choices in the Decision Log (§14).
 
@@ -679,22 +806,20 @@ Binding rules for every developer and AI agent working on TDOP:
 
 ## 18. Next Actions
 
-Immediate (this work cycle, PHASE 01):
+Immediate (next work cycle, PHASE 02):
 
-1. **P01-T12** — Verify every row of the Existing Implementation Audit (§16) against
-   actual source files; correct evidence paths; keep the task `IN PROGRESS` until the
-   whole inventory is file-verified.
-2. **P01-T13** — Create issue and pull-request templates under `.github/`.
-3. **P01-T14** — Create a CI skeleton workflow (build, lint, test) under
-   `.github/workflows/`.
-4. **P01-T15** — Define maintainer roles and fill the `[TBD]` contact placeholders in
-   `SECURITY.md` and `CODE_OF_CONDUCT.md`.
-5. When all Phase 01 exit criteria (§7, PHASE 01) are met: mark Phase 01 `DONE`,
-   record the transition in §15, and move **PHASE 02 — Requirements Engineering** to
-   `TO DO`.
+1. Open **Cycle 02** in §8 with goal "Approved requirements baseline" and move
+   P02-T01 to `IN PROGRESS` (set Phase 02 status `Planned → In progress`, DEC-008).
+2. **P02-T01 – P02-T06** — consolidate `README_PRD.md` and the specs under
+   `Specs/` (including `Specs/SRS.md`) into a versioned, traceable requirements
+   baseline (Phase 02 exit criteria, §7 of `TASK_BREAKDOWN.md`).
+3. When Phase 02 exit criteria are met: mark it `Completed`, append its
+   phase-closure summary to `CHANGELOG.md`, and update §2 in the same change set.
+
+Phase 01 is closed — do not reopen it; corrections belong in a new session entry.
 
 Standing rules for the next session:
 
 - Read this file first; continue only from the current position (§2).
-- Append `Session 02` — never edit Session 01.
+- Append `Session 05` — never edit Session 04 or earlier.
 - Update task states, phase progress, changelog, and logs as work happens.
