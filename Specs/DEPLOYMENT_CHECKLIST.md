@@ -46,8 +46,12 @@ MAX_FILE_SIZE=10485760
 
 ### 1. Clone and Configure
 ```bash
-git clone https://github.com/Tanzanian-Opportunities/Tanzanian_Opportunities.git
-cd Tanzanian_Opportunities/TDOP-infra
+# Clone the component repositories as siblings (compose build contexts
+# ../TDOP-backend and ../TDOP-frontend depend on this layout)
+git clone https://github.com/Tanzanian-Opportunities/TDOP-infra.git
+git clone https://github.com/Tanzanian-Opportunities/TDOP-backend.git
+git clone https://github.com/Tanzanian-Opportunities/TDOP-frontend.git
+cd TDOP-infra
 cp .env.example .env
 # Edit .env with production values
 ```
