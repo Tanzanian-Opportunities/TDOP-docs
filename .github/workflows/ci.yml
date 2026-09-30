@@ -14,7 +14,7 @@ jobs:
   docs-validation:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Documentation consistency validation
         shell: pwsh
         run: ./scripts/validate.ps1
